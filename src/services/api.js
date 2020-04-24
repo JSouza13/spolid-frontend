@@ -2,7 +2,7 @@ import 'dotenv/config';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.APP_API_URL,
+  baseURL: 'https://spolid-back.herokuapp.com/',
 });
 
 export default api;
