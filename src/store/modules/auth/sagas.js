@@ -54,7 +54,7 @@ export function* signUp({ payload }) {
       confirmButtonText: 'Ok!',
     }).then(async (result) => {
       if (result.value) {
-        history.push('/');
+        history.push('/logon');
       }
     });
   } catch (err) {
@@ -87,7 +87,7 @@ export function* Forgot({ payload }) {
       confirmButtonText: 'Ok!',
     }).then(async (result) => {
       if (result.value) {
-        history.push('/');
+        history.push('/logon');
       }
     });
   } catch (err) {
@@ -122,7 +122,7 @@ export function* Reset({ payload }) {
       confirmButtonText: 'Ok!',
     }).then(async (result) => {
       if (result.value) {
-        history.push('/');
+        history.push('/logon');
       }
     });
   } catch (err) {

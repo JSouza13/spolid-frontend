@@ -6,8 +6,6 @@ import capaCurso from '~/assets/capaCurso.jpg';
 
 import { Container } from './styles';
 
-// import { Container } from './styles';
-
 export default function Dashboard() {
   const profile = useSelector((state) => state.user.profile);
 

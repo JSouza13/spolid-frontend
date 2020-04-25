@@ -10,6 +10,8 @@ import logo from '~/assets/logo.svg';
 import { resetRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
 
+import { Container } from './styles';
+
 const schema = Yup.object().shape({
   password: Yup.string()
     .required('A senha deve conter no minimo 6 caracteres')
@@ -33,11 +35,11 @@ export default function ResetPassword() {
     dispatch(resetRequest(token.tokenTemp, password, confirmPassword));
   }
   return (
-    <div className="content">
+    <Container>
       <section>
         <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Link to="/">
+        <Link to="/logon">
           <FiArrowLeft size={16} color={themes.color.primary} />
           Voltar para o login
         </Link>
@@ -60,6 +62,6 @@ export default function ResetPassword() {
           </button>
         </Form>
       </section>
-    </div>
+    </Container>
   );
 }

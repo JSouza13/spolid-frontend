@@ -10,6 +10,8 @@ import logo from '~/assets/logo.svg';
 import { forgotRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
 
+import { Container } from './styles';
+
 const schema = Yup.object().shape({
   email: Yup.string()
     .email('Informe um e-mail válido')
@@ -24,11 +26,11 @@ export default function ForgotPassword() {
     dispatch(forgotRequest(email));
   }
   return (
-    <div className="content">
+    <Container>
       <section>
         <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Link to="/">
+        <Link to="/logon">
           <FiArrowLeft size={16} color={themes.color.primary} />
           Voltar
         </Link>
@@ -47,6 +49,6 @@ export default function ForgotPassword() {
           </button>
         </Form>
       </section>
-    </div>
+    </Container>
   );
 }

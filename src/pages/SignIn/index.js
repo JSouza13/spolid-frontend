@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import heroesImg from '~/assets/heroes.png';
 import logo from '~/assets/logo.svg';
 import { signInRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
+
+import { Container } from './styles';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -27,12 +28,12 @@ export default function SignIn() {
   }
 
   return (
-    <>
+    <Container>
       <section>
         <img src={logo} alt="SPOLID" width="350" height="100" />
 
         <Form schema={schema} onSubmit={handleSubmit}>
-          <h1>Faça seu login</h1>
+          <h1>Faça seu logon</h1>
 
           <Input name="email" type="email" placeholder="Seu e-mail" />
           <Input name="password" type="password" placeholder="Sua senha" />
@@ -55,8 +56,7 @@ export default function SignIn() {
           </Link>
         </Form>
       </section>
-
-      <img src={heroesImg} alt="Heroes" width="596" height="574" />
-    </>
+      <div className="background" />
+    </Container>
   );
 }

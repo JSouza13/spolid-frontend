@@ -10,6 +10,8 @@ import logo from '~/assets/logo.svg';
 import { signUpRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
 
+import { Container } from './styles';
+
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
@@ -27,13 +29,13 @@ export default function SignUp() {
     dispatch(signUpRequest(name, email, password));
   }
   return (
-    <div className="content">
+    <Container>
       <section>
         <img src={logo} alt="SPOLID" width="350" height="100" />
         <h1>Cadastro</h1>
         <p>Faça seu cadastro, entre na plataforma e conquiste o sucesso!</p>
 
-        <Link to="/">
+        <Link to="/logon">
           <FiArrowLeft size={16} color={themes.color.primary} />
           Já tenho cadastro
         </Link>
@@ -46,6 +48,6 @@ export default function SignUp() {
 
         <button type="submit">Cadastrar</button>
       </Form>
-    </div>
+    </Container>
   );
 }
