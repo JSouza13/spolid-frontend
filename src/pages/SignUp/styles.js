@@ -14,22 +14,12 @@ export const Container = styled.div`
   justify-content: space-between;
 
   @media (max-width: 650px) {
-    padding: 30px;
-    max-width: 100vw;
-    margin: 15px;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  @media (max-width: 650px) {
     margin: 25px;
     padding: 20px;
-    flex-direction: column-reverse;
-    justify-items: flex-end;
   }
 
   @media (max-width: 1024px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-items: flex-end;
   }
 

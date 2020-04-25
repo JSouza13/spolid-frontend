@@ -12,15 +12,22 @@ export const Container = styled.div`
 
 
   @media (max-width: 650px) {
-    margin: 25px;
-    padding: 20px;
-    flex-direction: column-reverse;
-    justify-items: flex-end;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.8) 100%),url('${backgroundEstudar}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   @media (max-width: 1024px) {
-    flex-direction: column-reverse;
-    justify-items: flex-end;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.8) 100%),url('${backgroundEstudar}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   img {
@@ -28,6 +35,10 @@ export const Container = styled.div`
       width: 100%;
       height: auto;
       display: block;
+
+      @media (max-width: 650px) {
+        padding: 20px;
+      }
     }
 
   section {
@@ -57,6 +68,7 @@ export const Container = styled.div`
 
       @media (max-width: 650px) {
         margin-top: 0px;
+        padding: 20px;
       }
 
       @media (max-width: 1024px) {
@@ -164,6 +176,12 @@ export const Container = styled.div`
     background-position: center center;
 
     @media (max-width: 768px) {
-      max-width: 50vw;
+      height: 0;
+      width: 0;
+    }
+
+    @media (max-width: 1024px) {
+      height: 0;
+      width: 0;
     }
 }`;

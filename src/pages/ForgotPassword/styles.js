@@ -24,12 +24,10 @@ export const Container = styled.div`
   @media (max-width: 650px) {
     margin: 25px;
     padding: 20px;
-    flex-direction: column-reverse;
-    justify-items: flex-end;
   }
 
   @media (max-width: 1024px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-items: flex-end;
   }
 
@@ -48,6 +46,7 @@ export const Container = styled.div`
 
     @media (max-width: 1024px) {
       max-width: 550px;
+      margin: 0 50px 0px 50px;
     }
 
     img {

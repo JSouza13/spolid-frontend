@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import themes from '~/styles/themes/light';
 
-import background from '../../assets/background.png';
+import backgroundEstudar from '../../assets/background.png';
 
 export const Container = styled.div`
 
@@ -15,7 +15,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.8) 100%),url('${background}');
+  background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.3) 100%),url('${backgroundEstudar}');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -28,12 +28,18 @@ export const Container = styled.div`
     display: block;
   }
 
+  @media (max-width: 1024px) {
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    }
+
 `;
 
 export const Content = styled.div`
   justify-content: initial;
   z-index: 1;
-  color: #fff;
+  color: #000;
   margin: 30px auto;
   box-sizing: content-box;
   display: block;
