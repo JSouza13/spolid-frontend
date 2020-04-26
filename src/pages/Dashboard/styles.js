@@ -1,13 +1,16 @@
-import { lighten } from 'polished';
 import styled from 'styled-components';
-
-import themes from '~/styles/themes/light';
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding: 0 40px;
-  margin: 32px auto;
+  margin: 32px 0;
+
+  @media (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   h2 {
     margin-top: 60px;
@@ -27,46 +30,17 @@ export const Container = styled.div`
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
     grid-gap: 24px;
     list-style: none;
+    margin-bottom: 60px;
 
-    li {
-      background: #fff;
-      padding: 24px;
-      border-radius: 8px;
-      position: relative;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+    p {
+      margin: 0;
+    }
 
-      &:hover {
-        background: ${lighten(0.65, `${themes.text}`)};
-        -ms-transform: scale(0.3);
-        transform: scale(1.1);
-        z-index: 1;
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      strong {
-        display: block;
-        margin-top: 10px;
-        color: #3c3b37;
-        font-size: 20px;
-      }
-
-      strong + p {
-        color: #737380;
-        line-height: 21px;
-        font-size: 12px;
-        margin-top: 0px;
-      }
-
-      strong + p + strong {
-        margin-top: 10px;
-        color: #3c3b37;
-      }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
   }
 `;

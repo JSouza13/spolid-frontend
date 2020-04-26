@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import capaCurso from '~/assets/capaCurso.jpg';
+import Card from '~/components/Card';
 
 import { Container } from './styles';
 
@@ -17,138 +17,69 @@ export default function Dashboard() {
         publicadas mensalmente
       </p>
       <ul>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />
-            <strong>Matemática básica</strong>
-
-            <p>Pedro Augusto</p>
-
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
-        <Link to="/curso/1">
-          <li>
-            <img src={capaCurso} alt="Curso" />{' '}
-            <strong>Matemática básica</strong>
-            <p>Pedro Augusto</p>
-            <strong>
-              {Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(20)}
-            </strong>
-          </li>
-        </Link>
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica 12312312312312313 123123123123123123"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
+        <Card
+          id={1}
+          Title="Matemática básica"
+          Provider="Pedro Augusto"
+          Price={50}
+          ImgUrl={capaCurso}
+        />
       </ul>
     </Container>
   );

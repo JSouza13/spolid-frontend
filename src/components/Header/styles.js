@@ -107,6 +107,11 @@ export const Content = styled.div`
     justify-content: space-between;
 
     strong {
+      display: inline-block;
+      width: 90px;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
       margin-top: 14px;
     }
     @media (max-width: 650px) {
