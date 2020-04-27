@@ -5,8 +5,8 @@ import themes from '~/styles/themes/light';
 
 export const Container = styled.div`
   padding: 50px;
-  background: #f0f0f5;
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  background: ${(props) => props.theme.theme.box};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 
   display: flex;
@@ -72,7 +72,7 @@ export const Container = styled.div`
 
     p {
       font-size: 18px;
-      color: #737380;
+      color: ${(props) => props.theme.theme.h1};
       line-height: 32px;
 
       @media (max-width: 650px) {
@@ -84,7 +84,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       margin-top: 40px;
-      color: #41414d;
+      color: ${(props) => props.theme.theme.h1};
       font-size: 16px;
       text-decoration: none;
       font-weight: 500;

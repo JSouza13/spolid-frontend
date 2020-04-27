@@ -6,7 +6,6 @@ import themes from '~/styles/themes/light';
 
 export const Container = styled.div`
   max-width: 100vw;
-
   display: flex;
   align-items: center;
 
@@ -14,7 +13,7 @@ export const Container = styled.div`
   @media (max-width: 650px) {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.8) 100%),url('${backgroundEstudar}');
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.8) 100%),url('${backgroundEstudar}');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -24,7 +23,7 @@ export const Container = styled.div`
     height: 100vh;
     width: 100vw;
     justify-content: center;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.8) 100%),url('${backgroundEstudar}');
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.8) 100%),url('${backgroundEstudar}');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -79,6 +78,7 @@ export const Container = styled.div`
       h1 {
         font-size: 32px;
         margin-bottom: 20px;
+        color: ${(props) => props.theme.theme.h1};
 
         @media (max-width: 650px) {
           margin: 10px;
@@ -92,7 +92,7 @@ export const Container = styled.div`
       input {
         width: 100%;
         height: 44px;
-        color: #333;
+        color: ${(props) => props.theme.theme.inputColor};
         border-width: 2px;
         border-style: solid;
         border-color: ${darken(0.03, `${themes.color.secudary}`)};
@@ -120,7 +120,6 @@ export const Container = styled.div`
         margin-top: 16px;
         height: 60px;
         width: 100%;
-        background: ${themes.color.primary};
         border-radius: 5px;
         color: #fff;
         font-weight: 700;
@@ -132,10 +131,6 @@ export const Container = styled.div`
         line-height: 60px;
         transition: background 0.2s;
 
-        &:hover {
-          background: ${darken(0.03, `${themes.color.primary}`)};
-        }
-
         @media (max-width: 650px) {
           height: 40px;
           line-height: 40px;
@@ -146,7 +141,7 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         margin-top: 40px;
-        color: #41414d;
+        color: ${(props) => props.theme.theme.h1};
         font-size: 16px;
         text-decoration: none;
         font-weight: 500;

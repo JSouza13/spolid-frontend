@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-import themes from '~/styles/themes/light';
-
 export const Container = styled.div`
-  background: #fff;
-  padding: 0 25px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: sticky;
+  background: ${(props) => props.theme.theme.header.background};
+  padding: 5px 20px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   top: 0;
-  z-index: 100;
+  position: sticky;
+  z-index: 2;
+  color: ${(props) => props.theme.theme.header.text};
 
   @media (max-width: 650px) {
     padding: 0 15px;
@@ -22,7 +22,7 @@ export const Badge = styled.button`
 `;
 
 export const OptionProfile = styled.div`
-  color: #fff;
+  color: ${(props) => props.theme.theme.header.text};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,14 +36,14 @@ export const OptionProfile = styled.div`
   a {
     font-size: 13px;
     line-height: 18px;
-    color: #fff;
+    color: ${(props) => props.theme.theme.header.text};
   }
 
   button {
     background: none;
     border: 0;
     position: relative;
-    color: #fff;
+    color: ${(props) => props.theme.theme.header.text};
     font-size: 13px;
   }
 `;
@@ -53,11 +53,36 @@ export const OptionProfileList = styled.div`
   width: 100px;
   left: calc(100% - 105px);
   top: calc(100% + 10px);
-  background: rgba(0, 0, 0, 0.8);
+  background: ${(props) => props.theme.theme.header.background};
   border-radius: 4px;
   padding: 15px 5px;
   z-index: 1000;
   display: ${(props) => (props.visible ? 'block' : 'none')};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  button {
+    height: 100%;
+    font-size: 13px;
+    line-height: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${(props) => props.theme.theme.header.text};
+    font-weight: bold;
+  }
+
+  a {
+    height: 100%;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${(props) => props.theme.theme.header.text};
+    font-weight: bold;
+  }
 
   &::before {
     content: '';
@@ -68,8 +93,7 @@ export const OptionProfileList = styled.div`
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-bottom: 20px solid rgba(0, 0, 0, 0.8);
-
+    border-bottom: 20px solid ${(props) => props.theme.theme.header.background};
     @media (max-width: 650px) {
       left: calc(50% - 8px);
     }
@@ -77,43 +101,37 @@ export const OptionProfileList = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 64px;
+  max-height: 80px;
   max-width: 100vw;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
+  justify-content: space-between;
   nav {
     display: flex;
     align-items: center;
 
     img {
-      border-right: 1px solid #eee;
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    a {
-      font-weight: bold;
-      color: ${themes.color.primary};
     }
   }
 
   aside {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    height: 100%;
 
-    strong {
-      display: inline-block;
-      width: 90px;
-      white-space: nowrap;
-      overflow: hidden !important;
-      text-overflow: ellipsis;
-      margin-top: 14px;
+    button {
+      border: 0;
+      background: none;
+      svg {
+        width: 25px;
+        height: 25px;
+        color: ${(props) => props.theme.theme.color.primary};
+      }
     }
+
     @media (max-width: 650px) {
       margin-left: 30px;
     }
@@ -123,7 +141,7 @@ export const Content = styled.div`
 export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
-  border-left: 1px solid #eee;
+  border-left: 1px solid ${(props) => props.theme.theme.trash};
 
   @media (max-width: 650px) {
     margin-left: 10px;
@@ -134,18 +152,29 @@ export const Profile = styled.div`
     margin-right: 10px;
 
     strong {
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      margin-top: 14px;
       margin-left: 10px;
       display: block;
-      color: #333;
+      color: ${(props) => props.theme.theme.header.text};
     }
 
     @media (max-width: 650px) {
       margin-left: 0px;
+
+      strong {
+        display: none;
+        width: 85px;
+      }
     }
   }
 
   img {
     display: block;
     border-radius: 50%;
+    background: ${(props) => props.theme.theme.header.text};
   }
 `;

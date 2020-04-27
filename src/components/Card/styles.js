@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
   width: 216px;
-  background: #fff;
+  background: ${(props) => props.theme.theme.background};
   border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
 
   .content {
     display: block;
@@ -12,7 +14,7 @@ export const Container = styled.div`
     font-size: small;
     strong {
       display: block !important;
-      color: #29303b;
+      color: ${(props) => props.theme.theme.trash};
       box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -41,7 +43,7 @@ export const Container = styled.div`
     }
 
     p + p {
-      color: #29303b;
+      color: ${(props) => props.theme.theme.trash};
       margin-right: 10px;
       white-space: nowrap;
       font-weight: 700;
@@ -55,13 +57,13 @@ export const Container = styled.div`
   }
 
   img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
     max-width: 100%;
     object-fit: cover;
   }
 
   &:hover {
+    top: -8px;
+    box-shadow: 0 8px 8px #666;
     img {
       opacity: 0.4;
       cursor: pointer;

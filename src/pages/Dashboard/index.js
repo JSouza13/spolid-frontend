@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import capaCurso from '~/assets/capaCurso.jpg';
 import Card from '~/components/Card';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 export default function Dashboard() {
   const profile = useSelector((state) => state.user.profile);
@@ -16,71 +16,73 @@ export default function Dashboard() {
         Escolha entre 100.000 cursos em vídeo online com novas adições
         publicadas mensalmente
       </p>
-      <ul>
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica 12312312312312313 123123123123123123"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-        <Card
-          id={1}
-          Title="Matemática básica"
-          Provider="Pedro Augusto"
-          Price={50}
-          ImgUrl={capaCurso}
-        />
-      </ul>
+      <Content>
+        <ul>
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica 12312312312312313 123123123123123123"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+          <Card
+            id={1}
+            Title="Matemática básica"
+            Provider="Pedro Augusto"
+            Price={50}
+            ImgUrl={capaCurso}
+          />
+        </ul>
+      </Content>
     </Container>
   );
 }
