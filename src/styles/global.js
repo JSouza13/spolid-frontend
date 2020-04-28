@@ -30,9 +30,9 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
   }
 
-  input, button, textarea {
-    font-family: Roboto, serif;
-    font-size: 16px;
+  input, button, textarea, a {
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
   }
 
   button {

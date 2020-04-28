@@ -39,6 +39,10 @@ export const Container = styled.div`
       }
     }
 
+    p {
+      margin: 10px 0;
+    }
+
     span {
       color: #cd0000;
       align-self: flex-start;

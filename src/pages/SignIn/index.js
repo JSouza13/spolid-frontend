@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FiLogIn } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -35,18 +35,8 @@ export default function SignIn() {
         <Form schema={schema} onSubmit={handleSubmit}>
           <h1>Faça seu logon</h1>
 
-          <Input
-            name="email"
-            type="email"
-            icon={FiMail}
-            placeholder="Seu e-mail"
-          />
-          <Input
-            name="password"
-            type="password"
-            icon={FiLock}
-            placeholder="Sua senha"
-          />
+          <Input name="email" type="email" placeholder="Seu e-mail" />
+          <Input name="password" type="password" placeholder="Sua senha" />
           <Link
             to="/forgot"
             style={{

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Switch from 'react-switch';
 
 import { Form, Input } from '@rocketseat/unform';
+import { ThemeContext } from 'styled-components';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
@@ -11,8 +13,17 @@ import { Container } from './styles';
 export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.user.profile);
+  const { theme } = useContext(ThemeContext);
+
+  const [provider, setProvider] = useState(profile.provider);
+
+  function handleProvider() {
+    setProvider(!provider);
+  }
 
   function handleSubmit(data) {
+    data.provider = provider;
+
     dispatch(updateProfileRequest(data));
   }
 
@@ -20,7 +31,6 @@ export default function Profile() {
     <Container>
       <Form initialData={profile} onSubmit={handleSubmit}>
         <AvatarInput name="avatar_id" />
-
         <Input name="name" placeholder="Nome completo" />
         <Input
           name="email"
@@ -29,9 +39,21 @@ export default function Profile() {
           disabled
           style={{ cursor: 'not-allowed' }}
         />
-
+        <p>Quero ser um instrutor!</p>
+        <Switch
+          onChange={handleProvider}
+          checked={provider}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={12}
+          width={35}
+          handleDiameter={18}
+          offColor={theme.color.secudary}
+          onColor={theme.color.primary}
+          offHandleColor={theme.color.primary}
+          onHandleColor={theme.color.secudary}
+        />
         <hr />
-
         <Input
           name="oldPassword"
           type="password"
@@ -43,7 +65,6 @@ export default function Profile() {
           type="password"
           placeholder="Confirmação de senha"
         />
-
         <button type="submit">Atualizar perfil</button>
       </Form>
     </Container>
