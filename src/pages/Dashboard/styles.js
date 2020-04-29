@@ -35,11 +35,13 @@ export const Content = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   margin-bottom: 60px;
+  justify-content: center;
+  align-items: center;
 
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
-    grid-gap: 24px;
+    grid-gap: 20px;
     list-style: none;
 
     p {

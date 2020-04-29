@@ -23,19 +23,20 @@ export const Badge = styled.button`
 
 export const OptionProfile = styled.div`
   color: ${(props) => props.theme.theme.header.text};
-  display: flex;
+  display: ${(props) => (props.visible ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
 
   & + div {
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px groove ${(props) => props.theme.theme.separator};
   }
 
   a {
     font-size: 13px;
     line-height: 18px;
+    text-align: center;
     color: ${(props) => props.theme.theme.header.text};
   }
 
@@ -45,6 +46,7 @@ export const OptionProfile = styled.div`
     position: relative;
     color: ${(props) => props.theme.theme.header.text};
     font-size: 13px;
+    text-align: center;
   }
 `;
 
@@ -141,7 +143,7 @@ export const Content = styled.div`
 export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
-  border-left: 1px solid ${(props) => props.theme.theme.trash};
+  border-left: 1px groove ${(props) => props.theme.theme.separator};
 
   @media (max-width: 650px) {
     margin-left: 10px;

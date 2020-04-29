@@ -1,10 +1,12 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
+import CreateCourse from '~/pages/CreateCourse';
 import Curso from '~/pages/Curso';
 import Dashboard from '~/pages/Dashboard';
 import ForgotPassword from '~/pages/ForgotPassword';
 import Home from '~/pages/Home';
+import Instructor from '~/pages/Instructor';
 import Profile from '~/pages/Profile';
 import ResetPassword from '~/pages/ResetPassword';
 import SignIn from '~/pages/SignIn';
@@ -23,6 +25,8 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/instructor" component={Instructor} isPrivate />
+      <Route path="/course/create" component={CreateCourse} isPrivate />
 
       <Route path="/curso/1" component={Curso} isPrivate />
     </Switch>

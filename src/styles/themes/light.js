@@ -6,7 +6,7 @@ export default {
     text: '#1C1C1C',
   },
 
-  h1: '#777777',
+  h1: '#333333',
   inputColor: '#333333',
   text: '#000000',
   trash: '#333333',
@@ -31,6 +31,8 @@ export default {
     paragraphBg: '#EEEEEE',
     strong: '#1C1C1C',
   },
+
+  separator: '#EEEEEE',
 
   button: {
     color: '#FFFFFF',

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { TiLightbulb } from 'react-icons/ti';
+import React, { useState, useContext } from 'react';
+import { FiSunset, FiSunrise } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { ThemeContext } from 'styled-components';
 
 import logo from '~/assets/logo.svg';
 // import Notifications from '~/components/Notifications';
@@ -21,6 +23,7 @@ export default function Header() {
   const dispatch = useDispatch();
 
   const profile = useSelector((state) => state.user.profile);
+  const { theme } = useContext(ThemeContext);
 
   const [visible, setVisible] = useState(false);
 
@@ -44,9 +47,12 @@ export default function Header() {
             </nav>
 
             <aside>
-              {/* <Notifications /> */}
               <button type="button" onClick={toggleTheme}>
-                <TiLightbulb size={30} />
+                {theme.title === 'light' ? (
+                  <FiSunset size={30} />
+                ) : (
+                  <FiSunrise size={30} />
+                )}
               </button>
 
               <Profile>
@@ -67,12 +73,18 @@ export default function Header() {
                 </Badge>
 
                 <OptionProfileList visible={visible}>
-                  <OptionProfile>
+                  <OptionProfile visible>
                     <Link to="/profile" onClick={handleToggleVisible}>
                       Editar perfil
                     </Link>
                   </OptionProfile>
-                  <OptionProfile>
+                  <OptionProfile visible={profile.provider}>
+                    <Link to="/instructor" onClick={handleToggleVisible}>
+                      Área do instrutor
+                    </Link>
+                  </OptionProfile>
+
+                  <OptionProfile visible>
                     <button type="button" onClick={handleSignOut}>
                       Sair
                     </button>
