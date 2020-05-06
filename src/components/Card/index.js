@@ -7,22 +7,22 @@ import { Container } from './styles';
 
 export default function Card({ id, Title, Provider, Price, ImgUrl }) {
   return (
-    <Container>
+    <Container imgUrl={ImgUrl}>
       <Link to={`/curso/${id}`}>
-        <li>
-          <img src={ImgUrl} alt={Title} />
+        <div className="__img" />
+        <div className="__img--hover" />
 
-          <div className="content">
-            <strong>{Title}</strong>
-            <p>{Provider}</p>
-            <p>
-              {Price.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              })}
-            </p>
-          </div>
-        </li>
+        <div className="content">
+          <span>{Provider}</span>
+          <h3>{Title}</h3>
+
+          <span>
+            {Price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </span>
+        </div>
       </Link>
     </Container>
   );

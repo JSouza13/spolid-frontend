@@ -64,9 +64,9 @@ export const Content = styled.div`
     margin-top: 50px;
     height: 60px;
     width: 100%;
-    background: ${(props) => props.theme.theme.color.primary};
+    background: ${(props) => props.theme.theme.button.background};
     border-radius: 5px;
-    color: ${(props) => props.theme.theme.button.color};
+    color: ${(props) => props.theme.theme.button.textColor};
     font-weight: 700;
     display: inline-block;
     text-align: center;

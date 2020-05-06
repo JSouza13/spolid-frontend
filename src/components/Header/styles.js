@@ -1,3 +1,4 @@
+import { lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -7,7 +8,7 @@ export const Container = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   top: 0;
   position: sticky;
-  z-index: 2;
+  z-index: 3;
   color: ${(props) => props.theme.theme.header.text};
 
   @media (max-width: 650px) {
@@ -19,6 +20,15 @@ export const Badge = styled.button`
   background: none;
   border: 0;
   position: relative;
+  margin: 5px 0px 5px;
+  padding: 0px 5px;
+
+  img {
+    display: block;
+    border-radius: 50%;
+    border: 2px solid ${lighten(0.2, '#e02020')};
+    background: ${(props) => props.theme.theme.header.text};
+  }
 `;
 
 export const OptionProfile = styled.div`
@@ -34,6 +44,7 @@ export const OptionProfile = styled.div`
   }
 
   a {
+    font-family: 'Roboto Slab', sans-serif;
     font-size: 13px;
     line-height: 18px;
     text-align: center;
@@ -52,13 +63,12 @@ export const OptionProfile = styled.div`
 
 export const OptionProfileList = styled.div`
   position: absolute;
-  width: 100px;
-  left: calc(100% - 105px);
+  width: 120px;
+  left: calc(100% - 130px);
   top: calc(100% + 10px);
   background: ${(props) => props.theme.theme.header.background};
   border-radius: 4px;
   padding: 15px 5px;
-  z-index: 1000;
   display: ${(props) => (props.visible ? 'block' : 'none')};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
 
@@ -89,7 +99,7 @@ export const OptionProfileList = styled.div`
   &::before {
     content: '';
     position: absolute;
-    left: calc(50% - 14px);
+    left: calc(50% - 5px);
     top: -20px;
     width: 0;
     height: 0;
@@ -103,7 +113,7 @@ export const OptionProfileList = styled.div`
 `;
 
 export const Content = styled.div`
-  max-height: 80px;
+  max-height: 140px;
   max-width: 100vw;
   display: flex;
   align-items: center;
@@ -116,6 +126,7 @@ export const Content = styled.div`
       width: 100%;
       height: auto;
       display: block;
+      margin: 10px 0;
     }
   }
 
@@ -125,12 +136,14 @@ export const Content = styled.div`
     height: 100%;
 
     button {
+      margin-top: 10px;
+      padding: 0px 5px;
       border: 0;
       background: none;
       svg {
         width: 25px;
         height: 25px;
-        color: ${(props) => props.theme.theme.color.primary};
+        color: #e02020;
       }
     }
 
@@ -141,6 +154,7 @@ export const Content = styled.div`
 `;
 
 export const Profile = styled.div`
+  padding: 0 5px;
   display: flex;
   margin-left: 20px;
   border-left: 1px groove ${(props) => props.theme.theme.separator};
@@ -158,7 +172,7 @@ export const Profile = styled.div`
       white-space: nowrap;
       overflow: hidden !important;
       text-overflow: ellipsis;
-      margin-top: 14px;
+      margin-top: 34px;
       margin-left: 10px;
       display: block;
       color: ${(props) => props.theme.theme.header.text};
@@ -172,11 +186,5 @@ export const Profile = styled.div`
         width: 85px;
       }
     }
-  }
-
-  img {
-    display: block;
-    border-radius: 50%;
-    background: ${(props) => props.theme.theme.header.text};
   }
 `;

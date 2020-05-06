@@ -1,54 +1,78 @@
-import React from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
+import React, { useRef, useCallback } from 'react';
+import { FiArrowLeft, FiMail } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@unform/web';
+import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
+import { Input } from '~/components/Input';
 import { forgotRequest } from '~/store/modules/auth/actions';
-import themes from '~/styles/themes/light';
 
-import { Container } from './styles';
-
-const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('Informe um e-mail válido')
-    .required('E-mail é obrigatório'),
-});
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 export default function ForgotPassword() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
-  function handleSubmit({ email }) {
-    dispatch(forgotRequest(email));
-  }
+  const formRef = useRef(null);
+
+  const handleSubmit = useCallback(async ({ email }) => {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('Informe um e-mail válido')
+          .required('E-mail é obrigatório'),
+      });
+
+      await schema.validate(
+        { email },
+        {
+          abortEarly: false,
+        }
+      );
+
+      await dispatch(forgotRequest(email));
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        Swal.fire({
+          title: `Ocorreu um erro`,
+          text: 'Informe um e-mail válido',
+          icon: 'error',
+          confirmButtonColor: '#e02020',
+          confirmButtonText: 'Ok!',
+        });
+      }
+    }
+  });
+
   return (
     <Container>
-      <section>
-        <img src={logo} alt="SPOLID" width="350" height="100" />
+      <Background />
+      <Content>
+        <AnimationContainer>
+          <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Link to="/logon">
-          <FiArrowLeft size={16} color={themes.color.primary} />
-          Voltar
-        </Link>
-      </section>
-      <section>
-        <h1>Recuperar senha</h1>
-        <Form
-          schema={schema}
-          onSubmit={handleSubmit}
-          style={{ marginTop: '0px' }}
-        >
-          <Input name="email" type="email" placeholder="E-mail" />
-
-          <button type="submit">
-            {loading ? 'Carregando...' : 'Recuperar'}
-          </button>
-        </Form>
-      </section>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Recuperar senha</h1>
+            <Input
+              name="email"
+              icon={FiMail}
+              type="text"
+              placeholder="E-mail"
+            />
+            <button type="submit">
+              {loading ? 'Carregando...' : 'Recuperar'}
+            </button>
+          </Form>
+          <Link to="/logon">
+            <FiArrowLeft />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
+      </Content>
     </Container>
   );
 }

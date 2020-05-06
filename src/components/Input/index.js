@@ -1,17 +1,34 @@
-import React, { useEffect, useRef } from 'react';
-import InputMask from 'react-input-mask';
-import IntlCurrencyInput from 'react-intl-currency-input';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
 
-import { currencyConfig } from '~/config/Currency';
+import { Container, Error, Label } from './styles';
 
-import { ErrorMessage, Content } from './styles';
-
-export const Input = ({ name, ...rest }) => {
+export const Input = ({ name, icon: Icon, ...rest }) => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
+  const {
+    fieldName,
+    defaultValue = '',
+    registerField,
+    error,
+    label,
+  } = useField(name);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+
+    setIsFilled(!!inputRef.current?.value);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -22,126 +39,43 @@ export const Input = ({ name, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <Content error={error}>
-      <input
-        ref={inputRef}
-        className={error ? 'has-error' : ''}
-        defaultValue={defaultValue}
-        {...rest}
-      />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Content>
+    <>
+      <Label>
+        {label && (
+          <label defaultValue={defaultValue} htmlFor={fieldName}>
+            {label}
+          </label>
+        )}
+      </Label>
+      <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
+        {Icon && <Icon size={20} />}
+
+        <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          ref={inputRef}
+          id={fieldName}
+          defaultValue={defaultValue}
+          {...rest}
+        />
+
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle size={20} color="#c53030" />
+          </Error>
+        )}
+      </Container>
+    </>
   );
 };
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  icon: PropTypes.element,
 };
 
-export const PhoneInput = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
-
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
-    });
-  }, [fieldName, registerField]);
-
-  return (
-    <Content error={error}>
-      <InputMask
-        {...rest}
-        ref={inputRef}
-        defaultValue={defaultValue}
-        mask="99 9 9999 9999"
-        maskChar=" "
-      />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Content>
-  );
-};
-
-PhoneInput.propTypes = {
-  name: PropTypes.string.isRequired,
-};
-
-export const TextArea = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
-
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
-    });
-  }, [fieldName, registerField]);
-
-  return (
-    <Content error={error}>
-      <textarea ref={inputRef} defaultValue={defaultValue} {...rest} />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Content>
-  );
-};
-
-TextArea.propTypes = {
-  name: PropTypes.string.isRequired,
-};
-
-export const Select = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
-
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
-    });
-  }, [fieldName, registerField]);
-
-  return (
-    <Content error={error}>
-      <select ref={inputRef} defaultValue={defaultValue} {...rest} />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Content>
-  );
-};
-
-Select.propTypes = {
-  name: PropTypes.string.isRequired,
-};
-
-export const CurrencyInput = ({ name, ...rest }) => {
-  const inputRef = useRef(null);
-  const { fieldName, defaultValue = null, registerField, error } = useField(
-    name
-  );
-
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputRef.current,
-      path: 'value',
-    });
-  }, [fieldName, registerField]);
-  return (
-    <Content error={error}>
-      <IntlCurrencyInput
-        defaultValue={defaultValue}
-        currency="BRL"
-        config={currencyConfig}
-        {...rest}
-      />
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-    </Content>
-  );
-};
-
-CurrencyInput.propTypes = {
-  name: PropTypes.string.isRequired,
+Input.defaultProps = {
+  label: null,
+  icon: null,
 };

@@ -19,7 +19,7 @@ export const Container = styled.div`
       height: 120px;
       width: 120px;
       border-radius: 50%;
-      border: 3px solid ${lighten(0.4, '#333')};
+      border: 2px solid ${lighten(0.2, '#e02020')};
       background: ${lighten(0.7, `${themes.color.primary}`)};
     }
 

@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import themes from '~/styles/themes/light';
 
 export const Container = styled.div`
+  max-width: 960px;
   background: ${(props) => props.theme.theme.box};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  margin-top: 50px;
-  margin-bottom: 21px;
+  margin: 45px auto;
   padding: 25px;
   display: flex;
   flex-direction: row;
@@ -16,7 +16,7 @@ export const Container = styled.div`
   justify-content: center;
 
   @media (max-width: 650px) {
-    margin: 50px 15px 0 15px;
+    margin: 50px 15px 20px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,6 +31,11 @@ export const Container = styled.div`
     padding: 30px 0;
     float: left;
 
+    @media (max-width: 650px) {
+      width: 100%;
+      margin-left: 0px;
+    }
+
     svg {
       color: ${(props) => props.theme.theme.h1};
     }
@@ -38,22 +43,28 @@ export const Container = styled.div`
     h1 {
       margin: 0 30px 0 0;
       font-weight: 400;
-      font-size: 36px;
+      font-size: 30px;
       margin-right: -15px;
       float: right;
       color: ${(props) => props.theme.theme.h1};
+
       @media (max-width: 650px) {
-        font-size: 30px;
+        font-size: 20px;
+      }
+
+      @media (max-width: 350px) {
+        font-size: 17px;
       }
     }
   }
 
   a {
     min-width: 290px;
-    color: ${(props) => props.theme.theme.button.color};
-    background-color: ${(props) => props.theme.theme.color.primary};
+    color: ${(props) => props.theme.theme.button.textColor};
+    background-color: ${(props) => props.theme.theme.button.background};
+    height: 60px;
     border: 1px solid transparent;
-    padding: 16px 12px;
+    padding: 20px 12px;
     font-size: 16px;
     border-radius: 5px;
     display: inline-block;
@@ -65,7 +76,7 @@ export const Container = styled.div`
     transition: background 0.2s;
 
     &:hover {
-      background: ${darken(0.03, `${themes.color.primary}`)};
+      background: ${darken(0.03, `${themes.button.background}`)};
     }
   }
 `;

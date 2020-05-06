@@ -21,7 +21,7 @@ export default {
   background: '#212121',
 
   color: {
-    primary: '#0f7c90',
+    primary: '#C91C1C',
     secudary: '#dcdce6',
   },
 
@@ -35,6 +35,18 @@ export default {
   separator: '#999999',
 
   button: {
-    color: '#FFFFFF',
+    background: '#C91C1C',
+    textColor: '#FFFFFF',
+  },
+
+  colors: {
+    primary: '#E02020',
+    secundary: '#FCE3E3',
+    featured: '#E5A421',
+  },
+
+  input: {
+    background: '#696769',
+    color: '#C0C0C0',
   },
 };

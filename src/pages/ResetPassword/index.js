@@ -1,16 +1,16 @@
 import React from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiLock } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
+import { Input } from '~/components/Input';
 import { resetRequest } from '~/store/modules/auth/actions';
-import themes from '~/styles/themes/light';
 
-import { Container } from './styles';
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 const schema = Yup.object().shape({
   password: Yup.string()
@@ -36,32 +36,41 @@ export default function ResetPassword() {
   }
   return (
     <Container>
-      <section>
-        <img src={logo} alt="SPOLID" width="350" height="100" />
+      <Background />
+      <Content>
+        <AnimationContainer>
+          <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Link to="/logon">
-          <FiArrowLeft size={16} color={themes.color.primary} />
-          Voltar para o login
-        </Link>
-      </section>
-      <section>
-        <Form
-          schema={schema}
-          onSubmit={handleSubmit}
-          style={{ marginTop: '0px' }}
-        >
-          <Input name="password" type="password" placeholder="Sua senha" />
-          <Input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirme sua senha"
-          />
+          <Form
+            schema={schema}
+            onSubmit={handleSubmit}
+            style={{ marginTop: '0px' }}
+          >
+            <h1>Recuperar senha</h1>
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
 
-          <button type="submit">
-            {loading ? 'Carregando...' : 'Recuperar'}
-          </button>
-        </Form>
-      </section>
+            <Input
+              name="confirmPassword"
+              icon={FiLock}
+              type="password"
+              placeholder="Confirme sua senha"
+            />
+
+            <button type="submit">
+              {loading ? 'Carregando...' : 'Salvar'}
+            </button>
+          </Form>
+          <Link to="/logon">
+            <FiArrowLeft />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
+      </Content>
     </Container>
   );
 }

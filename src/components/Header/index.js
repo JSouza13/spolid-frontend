@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
 
 import logo from '~/assets/logo.svg';
-// import Notifications from '~/components/Notifications';
 import { signOut } from '~/store/modules/auth/actions';
 import ToggleTheme from '~/styles/themes/context';
 
@@ -67,8 +66,8 @@ export default function Header() {
                       'https://api.adorable.io/avatars/50/abott@adorable.png'
                     }
                     alt=""
-                    width="50"
-                    height="50"
+                    width="60"
+                    height="60"
                   />
                 </Badge>
 

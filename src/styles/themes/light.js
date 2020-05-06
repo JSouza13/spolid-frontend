@@ -11,7 +11,7 @@ export default {
   text: '#000000',
   trash: '#333333',
 
-  box: '#FFFFFF',
+  box: '#dcdce6',
 
   modal: {
     background: '#f0f0f5',
@@ -21,8 +21,8 @@ export default {
   background: '#FFFFFF',
 
   color: {
-    primary: '#0f7c90',
-    secudary: '#dcdce6',
+    primary: '#C91C1C',
+    secudary: '#C0C0Cf',
   },
 
   list: {
@@ -35,6 +35,22 @@ export default {
   separator: '#EEEEEE',
 
   button: {
-    color: '#FFFFFF',
+    background: '#C91C1C',
+    textColor: '#FFFFFF',
+  },
+
+  colors: {
+    primary: '#E02020',
+    secundary: '#FCE3E3',
+    featured: '#E5A421',
+
+    alterarpara: '#69eb83',
+    comessebackground: '#242831',
+    paratextos: '#215943',
+  },
+
+  input: {
+    background: '#f0f0f5',
+    color: '#333333',
   },
 };

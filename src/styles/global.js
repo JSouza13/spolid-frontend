@@ -1,18 +1,15 @@
-import { darken } from 'polished';
+import { shade } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 
-import themes from './themes/light';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
-  *{
+  * {
     margin: 0;
     padding: 0;
     outline: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
   }
 
   *:focus {
@@ -24,28 +21,14 @@ export default createGlobalStyle`
   }
 
   body {
-    font: 400 14px Roboto, sans-serif;
-    background: ${(props) => props.theme.theme.background};
+    background-color: ${(props) => props.theme.theme.background};
     color: ${(props) => props.theme.theme.trash};;
-    -webkit-font-smoothing: antialiased !important;
+    -webkit-font-smoothing: antialiased;
   }
 
-  input, button, textarea, a {
-    font-family: Roboto, sans-serif;
+  body, input, button {
+    font-family: 'Roboto Slab', sans-serif;
     font-size: 18px;
-  }
-
-  button {
-    background: ${(props) => props.theme.theme.color.primary};
-    color: ${(props) => props.theme.theme.button.color};
-
-    &:hover {
-        background: ${darken(0.03, `${themes.color.primary}`)};
-      }
-  }
-
-  input {
-    color: ${(props) => props.theme.theme.inputColor};
   }
 
   h1, h2, h3, h4, h5, h6, strong {
@@ -53,10 +36,29 @@ export default createGlobalStyle`
   }
 
   button {
+    background: ${(props) => props.theme.theme.button.background};
+    color: ${(props) => props.theme.theme.button.textColor};
+    font-weight: 500;
+    margin-top: 16px;
+    border-radius: 10px;
+    border: 0;
+    padding: 0 16px;
+    height: 56px;
+    width: 100%;
+    transition: background 0.2s;
     cursor: pointer;
+    &:hover {
+      background: ${shade(0.2, '#E02020')};
+    }
+  }
+
+  input {
+    color: ${(props) => props.theme.theme.inputColor};
   }
 
   a {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 18px;
     text-decoration: none;
   }
 

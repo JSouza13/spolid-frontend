@@ -1,16 +1,16 @@
 import React from 'react';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiUser, FiMail, FiLock } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
+import { Input } from '~/components/Input';
 import { signUpRequest } from '~/store/modules/auth/actions';
-import themes from '~/styles/themes/light';
 
-import { Container } from './styles';
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -30,24 +30,36 @@ export default function SignUp() {
   }
   return (
     <Container>
-      <section>
-        <img src={logo} alt="SPOLID" width="350" height="100" />
-        <h1>Cadastro</h1>
-        <p>Faça seu cadastro, entre na plataforma e conquiste o sucesso!</p>
+      <Background />
+      <Content>
+        <AnimationContainer>
+          <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Link to="/logon">
-          <FiArrowLeft size={16} color={themes.color.primary} />
-          Já tenho cadastro
-        </Link>
-      </section>
+          <Form schema={schema} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
 
-      <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="name" type="text" placeholder="Nome completo" />
-        <Input name="email" type="email" placeholder="E-mail" />
-        <Input name="password" type="password" placeholder="Sua senha" />
+            <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
+            <Input
+              name="email"
+              icon={FiMail}
+              type="text"
+              placeholder="E-mail"
+            />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
 
-        <button type="submit">Cadastrar</button>
-      </Form>
+            <button type="submit">Cadastrar</button>
+          </Form>
+          <Link to="/logon">
+            <FiArrowLeft />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
+      </Content>
     </Container>
   );
 }

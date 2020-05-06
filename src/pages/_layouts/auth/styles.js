@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
-  max-height: 100vh;
-  height: 100vh;
 
   @media (max-width: 650px) {
     overflow: hidden;

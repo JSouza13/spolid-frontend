@@ -1,46 +1,66 @@
-import { lighten } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
 
 export const Container = styled.div`
   max-width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 25px auto;
   padding: 25px;
   background: ${(props) => props.theme.theme.box};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
+  animation: ${appearFromLeft} 1.3s;
+`;
+
+export const Container2 = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   @media (max-width: 650px) {
     margin: 25px;
   }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+`;
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   form {
-    max-width: 540px;
-    width: 100%;
+    margin: 40px 0;
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h1 {
       font-size: 32px;
-      margin-bottom: 32px;
-    }
-
-    input {
-      width: 100%;
-      height: 44px;
-      color: ${(props) => props.theme.theme.inputColor};
-      border: 1px solid #dcdce6;
-      border-radius: 8px;
-      padding: 0 15px;
-      margin: 10px 0 10px;
-
-      &::placeholder {
-        font-size: 14px;
-      }
+      margin-bottom: 24px;
+      color: ${(props) => props.theme.theme.h1};
     }
 
     p {
       margin: 10px 0;
+      align-self: stretch;
     }
 
     span {
@@ -50,26 +70,9 @@ export const Container = styled.div`
       font-weight: bold;
     }
 
-    hr {
-      border: 0;
-      height: 1px;
-      background: ${lighten(0.4, '#333')};
-      margin: 20px 0 20px;
-    }
-
     button {
-      margin: 5px 0 0;
-      height: 44px;
-      width: 100%;
-      border: 0;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 16px;
-      transition: background 0.2s;
-    }
-    button + button {
-      margin: 5px 0 0;
-      height: 44px;
+      margin: 15px 0 0;
+      height: 60px;
       width: 100%;
       border: 0;
       border-radius: 8px;

@@ -1,16 +1,17 @@
 import React from 'react';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
+import { Input } from '~/components/Input';
 import { signInRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
 
-import { Container } from './styles';
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -29,33 +30,38 @@ export default function SignIn() {
 
   return (
     <Container>
-      <section>
-        <img src={logo} alt="SPOLID" width="350" height="100" />
+      <Content>
+        <AnimationContainer>
+          <img src={logo} alt="SPOLID" width="350" height="100" />
 
-        <Form schema={schema} onSubmit={handleSubmit}>
-          <h1>Faça seu logon</h1>
+          <Form schema={schema} onSubmit={handleSubmit}>
+            <h1>Faça seu logon</h1>
 
-          <Input name="email" type="email" placeholder="Seu e-mail" />
-          <Input name="password" type="password" placeholder="Sua senha" />
-          <Link
-            to="/forgot"
-            style={{
-              marginTop: '5px',
-              fontSize: '12px',
-              fontWeight: 600,
-            }}
-          >
-            Esqueci minha senha
-          </Link>
+            <Input
+              name="email"
+              icon={FiMail}
+              type="text"
+              placeholder="E-mail"
+            />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
 
-          <button type="submit">{loading ? 'Carregando...' : 'Entrar'}</button>
+            <button type="submit">
+              {loading ? 'Carregando...' : 'Entrar'}
+            </button>
+            <Link to="/forgot">Esqueci minha senha</Link>
+          </Form>
           <Link to="/register">
             <FiLogIn size={16} color={themes.color.primary} />
-            Criar conta gratuita
+            Criar conta
           </Link>
-        </Form>
-      </section>
-      <div className="background" />
+        </AnimationContainer>
+      </Content>
+      <Background />
     </Container>
   );
 }

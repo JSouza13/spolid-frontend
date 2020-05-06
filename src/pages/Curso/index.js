@@ -1,7 +1,15 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Form } from '@unform/web';
+
+import { Container } from './styles';
 
 export default function Curso() {
-  return <div />;
+  return (
+    <Container>
+      <Form>
+        <h1>teste</h1>
+      </Form>
+    </Container>
+  );
 }

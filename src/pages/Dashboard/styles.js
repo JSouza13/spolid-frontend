@@ -1,15 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   padding: 0 40px;
   margin: 32px 0;
-
+  -webkit-scrollbar {
+    width: 50px;
+    background-color: #f5f5f5;
+  }
   @media (max-width: 550px) {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  @media (max-width: 350px) {
+    padding: 0 15px;
   }
 
   h2 {
@@ -29,6 +35,17 @@ export const Container = styled.div`
   }
 `;
 
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+`;
+
 export const Content = styled.div`
   padding: 50px;
   background: ${(props) => props.theme.theme.box};
@@ -37,6 +54,7 @@ export const Content = styled.div`
   margin-bottom: 60px;
   justify-content: center;
   align-items: center;
+  animation: ${appearFromLeft} 1.3s;
 
   ul {
     display: grid;

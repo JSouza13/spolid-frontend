@@ -1,41 +1,77 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  input {
-    border: 2px solid ${(props) => (props.error ? '#B22222' : '#DDDDDD')};
-    border-radius: 5px;
-  }
-  select {
-    border-radius: 4px;
-    margin-top: 10px;
-    padding: 12px 12px;
-    border: 2px solid ${(props) => (props.error ? '#B22222' : '#DDDDDD')};
-    width: 100%;
-  }
-
-  textarea {
-    margin-top: 8px;
-    resize: vertical;
-    padding: 16px 24px;
-    line-height: 2.4rem;
-    min-height: 140px;
-    width: 100%;
-    height: 60px;
-    color: #333;
-    padding: 0 24px;
-    background: ${(props) => props.theme.theme.inputColor};
-    border: 2px solid ${(props) => (props.error ? '#B22222' : '#DDDDDD')};
-    border-radius: 5px;
-    &::placeholder {
-      padding-top: 3px;
-    }
+export const Label = styled.div`
+  label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
   }
 `;
 
-export const ErrorMessage = styled.div`
-  margin-top: 5px;
-  font-size: 1.4rem;
-  color: #b22222;
+export const Container = styled.div`
+  color: ${(props) => props.theme.theme.input.color};
+  background: ${(props) => props.theme.theme.input.background};
+  border: 2px solid ${(props) => props.theme.theme.input.background};
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  ${(props) =>
+    props.isFocused &&
+    css`
+      color: ${props.theme.theme.button.background};
+      border-color: ${props.theme.theme.button.background};
+    `}
+  ${(props) =>
+    props.isFilled &&
+    css`
+      color: ${props.theme.theme.button.background};
+    `}
+
+  & + div {
+    margin-top: 8px;
+  }
+
+  input {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: ${(props) => props.theme.theme.input.color};
+    ::placeholder {
+      color: ${(props) => props.theme.theme.input.color};
+    }
+  }
+  svg {
+    margin-right: 16px;
+    color: ${(props) => props.theme.theme.input.color};
+    ${(props) =>
+      props.isFocused &&
+      css`
+        color: ${props.theme.theme.button.background};
+        border-color: ${props.theme.theme.button.background};
+      `}
+    ${(props) =>
+      props.isFilled &&
+      css`
+        color: ${props.theme.theme.button.background};
+      `}
+  }
+`;
+
+export const Error = styled.div`
+  height: 20px;
+  svg {
+    margin: 0px;
+  }
+  span {
+    background: #c53030;
+    color: #fff;
+    &::before {
+      border-color: #c53030 transparent;
+    }
+  }
 `;

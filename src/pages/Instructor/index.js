@@ -8,7 +8,7 @@ export default function Instructor() {
   return (
     <Container>
       <div className="text">
-        <FiFileText size={64} style={{ marginRight: '30px' }} />
+        <FiFileText size={44} style={{ marginRight: '30px' }} />
         <h1>Iniciar criação do curso</h1>
       </div>
       <Link to="/course/create">Criar novo curso</Link>
