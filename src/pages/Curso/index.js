@@ -1,15 +1,24 @@
 import React from 'react';
 
-import { Form } from '@unform/web';
-
-import { Container } from './styles';
+import Leasson from './Leasson';
+import { Container, Classes, Content } from './styles';
 
 export default function Curso() {
   return (
     <Container>
-      <Form>
-        <h1>teste</h1>
-      </Form>
+      <Content>
+        <Leasson />
+      </Content>
+      <Classes>
+        <ul>
+          <li>aula 01</li>
+          <li>aula 02</li>
+          <li>aula 03</li>
+          <li>aula 04</li>
+          <li>aula 05</li>
+          <li>aula 06</li>
+        </ul>
+      </Classes>
     </Container>
   );
 }
