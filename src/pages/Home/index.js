@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logoLight from '~/assets/logo-light.svg';
+import logo from '~/assets/logo.svg';
 
 import { Container, Content } from './styles';
 
 export default function Home() {
   return (
     <Container>
-      <img src={logoLight} alt="SPOLID" width="200" height="100" />
+      <img src={logo} alt="SPOLID" width="200" height="100" />
       <Content>
         <h1>Aprenda no seu tempo</h1>
         <p>

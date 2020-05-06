@@ -15,7 +15,7 @@ function Leasson() {
   return (
     <Container>
       <ResponsivePlayer
-        url="https://www.youtube.com/watch?v=DJJ1LezyCYU"
+        url="https://www.youtube.com/watch?v=EhnXaybirdA"
         onProgress={handleWatchComplete}
       />
       <Complete isComplete={watchComplete}> Aula concluida</Complete>
