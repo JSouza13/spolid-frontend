@@ -44,6 +44,14 @@ export const Container = styled.div`
     ::placeholder {
       color: ${(props) => props.theme.theme.input.color};
     }
+    @media (max-width: 440px) {
+      display: block !important;
+      box-orient: horizontal;
+      overflow: hidden;
+      text-overflow: clip;
+      text-overflow: ellipsis;
+      text-overflow: '…';
+    }
   }
   svg {
     margin-right: 16px;
@@ -59,6 +67,13 @@ export const Container = styled.div`
       css`
         color: ${props.theme.theme.button.background};
       `}
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: ${(props) => props.theme.theme.input.color};
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
 

@@ -24,14 +24,6 @@ export const Container = styled.div`
   animation: ${appearFromLeft} 1.3s;
 `;
 
-export const Container2 = styled.div`
-  display: flex;
-
-  @media (max-width: 650px) {
-    margin: 25px;
-  }
-`;
-
 export const Content = styled.div`
   display: flex;
   justify-content: center;
@@ -79,6 +71,15 @@ export const AnimationContainer = styled.div`
       font-weight: 700;
       font-size: 16px;
       transition: background 0.2s;
+    }
+
+    @media (max-width: 650px) {
+      max-width: 280px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 340px) {
+      max-width: 250px;
     }
   }
 `;

@@ -23,7 +23,7 @@ export default createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.theme.background};
     color: ${(props) => props.theme.theme.trash};;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {

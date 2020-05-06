@@ -42,7 +42,7 @@ export default function Profile() {
               type="text"
               placeholder="E-mail"
               disabled
-              style={{ cursor: 'not-allowed' }}
+              style={{ cursor: 'not-allowed', opacity: '0.3' }}
             />
             <p>Quero ser um instrutor!</p>
             <div style={{ alignSelf: 'start', marginBottom: '30px' }}>

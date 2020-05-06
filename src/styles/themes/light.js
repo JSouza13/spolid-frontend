@@ -18,7 +18,7 @@ export default {
     inputColor: '#C0C0C0',
   },
 
-  background: '#FFFFFF',
+  background: '#f3f2f1',
 
   color: {
     primary: '#C91C1C',

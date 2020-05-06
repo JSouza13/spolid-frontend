@@ -13,7 +13,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 50vw;
 `;
 
 const appearFromLeft = keyframes`
@@ -44,6 +44,10 @@ export const AnimationContainer = styled.div`
     h1 {
       margin-bottom: 24px;
       color: ${(props) => props.theme.theme.h1};
+
+      @media (max-width: 340px) {
+        font-size: 30px;
+      }
     }
 
     a {
@@ -53,6 +57,15 @@ export const AnimationContainer = styled.div`
       &:hover {
         color: ${shade(0.2, '#C0C0C0')};
       }
+    }
+
+    @media (max-width: 650px) {
+      max-width: 320px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 340px) {
+      max-width: 250px;
     }
   }
   > a {

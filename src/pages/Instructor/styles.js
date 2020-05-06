@@ -15,11 +15,19 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 800px) {
+    max-width: 700px;
+  }
+
   @media (max-width: 650px) {
-    margin: 50px 15px 20px 15px;
+    max-width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  @media (max-width: 340px) {
+    max-width: 280px;
   }
 
   .text {
@@ -27,33 +35,35 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: -15px;
     padding: 30px 0;
     float: left;
 
     @media (max-width: 650px) {
       width: 100%;
       margin-left: 0px;
+      padding: 20px 0;
     }
 
     svg {
       color: ${(props) => props.theme.theme.h1};
+      margin-left: 15px;
     }
 
     h1 {
       margin: 0 30px 0 0;
       font-weight: 400;
       font-size: 30px;
-      margin-right: -15px;
       float: right;
       color: ${(props) => props.theme.theme.h1};
 
       @media (max-width: 650px) {
         font-size: 20px;
+        margin-right: 0px;
       }
 
       @media (max-width: 350px) {
-        font-size: 17px;
+        font-size: 15px;
+        margin-right: 0px;
       }
     }
   }
@@ -77,6 +87,9 @@ export const Container = styled.div`
 
     &:hover {
       background: ${darken(0.03, `${themes.button.background}`)};
+    }
+    @media (max-width: 340px) {
+      min-width: 0px;
     }
   }
 `;

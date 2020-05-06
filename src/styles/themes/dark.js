@@ -8,7 +8,7 @@ export default {
 
   h1: '#C0C0C0',
   inputColor: '#333333',
-  text: '#FFFAFB',
+  text: '#f5f5f5',
   trash: '#999999',
 
   box: '#333333',

@@ -7,14 +7,12 @@ export const Container = styled.div`
   margin: 32px 0;
   -webkit-scrollbar {
     width: 50px;
-    background-color: #f5f5f5;
+    background: ${(props) => props.theme.theme.background};
   }
   @media (max-width: 550px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  @media (max-width: 350px) {
     padding: 0 15px;
   }
 
@@ -25,6 +23,10 @@ export const Container = styled.div`
     line-height: 1.2;
     letter-spacing: -0.02rem;
     font-size: 2.1rem;
+
+    @media (max-width: 550px) {
+      margin-top: 25px;
+    }
   }
 
   p {
@@ -69,9 +71,13 @@ export const Content = styled.div`
     @media (max-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+  }
 
-    @media (max-width: 518px) {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
+  @media (max-width: 550px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 350px) {
+    padding: 20px;
   }
 `;

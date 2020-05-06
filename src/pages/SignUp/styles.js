@@ -13,7 +13,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 50vw;
 `;
 
 const appearFromLeft = keyframes`

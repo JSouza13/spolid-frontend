@@ -54,32 +54,36 @@ export default function NewIncident() {
   return (
     <Container>
       <Form ref={formRef} onSubmit={handleSubmit}>
+        <h1>Criar novo curso</h1>
         <Input
-          placeholder="Insira o título de seu curso"
+          placeholder="Insira o título"
           name="title"
           icon={FiBookOpen}
-          label="teste"
+          label="Título"
         />
 
         <TextArea
           placeholder="Insira a descrição de seu curso"
           name="description"
+          label="Descrição"
         />
 
         <InputFile
           type="file"
           name="img-course"
           accept="image/*"
-          label="Imagem do curso"
+          label="Insira uma imagem"
           onChange={handleChange}
           icon={FiImage}
+          placeholder="Imagem de capa"
         />
 
         <InputFile
           type="file"
           name="video-course"
           accept="video/*"
-          label="Vídeo promocional"
+          label="Insira um vídeo"
+          placeholder="Vídeo promocional"
           onChange={handleChange}
           icon={FiYoutube}
         />

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  margin-right: 25px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
   position: relative;
   border-radius: 12px;
@@ -18,6 +17,7 @@ export const Container = styled.div`
     .__img--hover {
       height: 100%;
       opacity: 0.2;
+      transition: 0.4s all ease-out;
     }
   }
   .__img {

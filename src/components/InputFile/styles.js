@@ -1,5 +1,14 @@
 import styled, { css } from 'styled-components';
 
+export const Label = styled.div`
+  label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+`;
+
 export const Content = styled.div`
   width: max-content;
   height: 44px;
@@ -8,6 +17,7 @@ export const Content = styled.div`
   border: 2px solid ${(props) => props.theme.theme.input.background};
   border-radius: 10px;
   padding: 16px;
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -22,7 +32,9 @@ export const Content = styled.div`
 
   label {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    width: 100%;
+
     font-size: 16px;
     color: ${(props) => props.theme.theme.input.color};
     cursor: pointer;

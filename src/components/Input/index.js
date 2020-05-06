@@ -6,19 +6,13 @@ import PropTypes from 'prop-types';
 
 import { Container, Error, Label } from './styles';
 
-export const Input = ({ name, icon: Icon, ...rest }) => {
+export const Input = ({ name, label, icon: Icon, ...rest }) => {
   const inputRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const {
-    fieldName,
-    defaultValue = '',
-    registerField,
-    error,
-    label,
-  } = useField(name);
+  const { fieldName, defaultValue = '', registerField, error } = useField(name);
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
