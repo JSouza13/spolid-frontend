@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ResponsivePlayer from '~/components/Video';
 
-import { Container, Complete } from './styles';
+import { Container } from './styles';
 
 function Leasson() {
   const [watchComplete, setWatchComplete] = useState(false);
@@ -18,7 +18,6 @@ function Leasson() {
         url="https://www.youtube.com/watch?v=EhnXaybirdA"
         onProgress={handleWatchComplete}
       />
-      <Complete isComplete={watchComplete}> Aula concluida</Complete>
     </Container>
   );
 }

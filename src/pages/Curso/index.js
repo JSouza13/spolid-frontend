@@ -8,17 +8,17 @@ export default function Curso() {
     <Container>
       <Content>
         <Leasson />
+        <Classes>
+          <ul>
+            <li>aula 01</li>
+            <li>aula 02</li>
+            <li>aula 03</li>
+            <li>aula 04</li>
+            <li>aula 05</li>
+            <li>aula 06</li>
+          </ul>
+        </Classes>
       </Content>
-      <Classes>
-        <ul>
-          <li>aula 01</li>
-          <li>aula 02</li>
-          <li>aula 03</li>
-          <li>aula 04</li>
-          <li>aula 05</li>
-          <li>aula 06</li>
-        </ul>
-      </Classes>
     </Container>
   );
 }

@@ -46,17 +46,23 @@ export default function Header() {
             </nav>
 
             <aside>
-              <button type="button" onClick={toggleTheme}>
-                {theme.title === 'light' ? (
-                  <FiSunset size={30} />
-                ) : (
-                  <FiSunrise size={30} />
-                )}
-              </button>
+              <div className="setTheme">
+                <button
+                  className="toggleTheme"
+                  type="button"
+                  onClick={toggleTheme}
+                >
+                  {theme.title === 'light' ? (
+                    <FiSunset size={30} />
+                  ) : (
+                    <FiSunrise size={30} />
+                  )}
+                </button>
+              </div>
 
               <Profile>
                 <div>
-                  <strong>{profile.name}</strong>
+                  <span>{profile.name}</span>
                 </div>
 
                 <Badge onClick={handleToggleVisible}>
@@ -66,8 +72,6 @@ export default function Header() {
                       'https://api.adorable.io/avatars/50/abott@adorable.png'
                     }
                     alt=""
-                    width="60"
-                    height="60"
                   />
                 </Badge>
 

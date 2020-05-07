@@ -15,8 +15,8 @@ export default function Home() {
           Estude a qualquer hora em qualquer lugar. Explore os vários cursos
           disponíveis.
         </p>
-        <Link to="/logon">Acessar</Link>
       </Content>
+      <Link to="/logon">Acessar</Link>
     </Container>
   );
 }

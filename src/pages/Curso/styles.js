@@ -12,31 +12,24 @@ const appearFromLeft = keyframes`
 `;
 export const Container = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0 30px;
 `;
 
 export const Content = styled.div`
-  width: 100%;
-  max-width: 65vw;
-  padding: 0 30px;
-  margin: 32px 0;
-  -webkit-scrollbar {
-    width: 50px;
-    background: ${(props) => props.theme.theme.background};
-  }
+  display: flex;
+  max-width: 1366px;
+  align-items: flex-start;
+  flex: 1 1 0%;
+  padding: 40px 50px;
+  overflow: hidden;
 `;
 
 export const Classes = styled.div`
-  align-self: flex-start;
-  width: 100%;
-  max-width: 35vw;
-  display: flex;
-  padding: 30px;
-  margin: 32px 0;
+  width: 350px;
+  margin-left: 30px;
+  display: initial;
   background: ${(props) => props.theme.theme.box};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
+  border-radius: 5px;
+  overflow: hidden;
   animation: ${appearFromLeft} 1.3s;
 `;

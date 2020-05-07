@@ -24,7 +24,7 @@ function ResponsivePlayer({ url, onProgress }) {
 
 ResponsivePlayer.propTypes = {
   url: PropTypes.string.isRequired,
-  onProgress: PropTypes.number,
+  onProgress: PropTypes.func,
 };
 
 ResponsivePlayer.defaultProps = {

@@ -12,6 +12,7 @@ const appearFromLeft = keyframes`
 `;
 
 export const Container = styled.div`
+  padding-top: 120px;
   max-width: fit-content;
   display: flex;
   align-items: center;

@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  width: 100%;
+  min-width: 0px;
+  flex: 1 1 0%;
+`;
 
 export const Complete = styled.div`
-  padding: 15px 20px;
-  margin: 20px 0;
-  display: inline-block;
-
   ${(props) =>
     !props.isComplete &&
     css`

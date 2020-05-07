@@ -15,7 +15,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-image: linear-gradient(to bottom, rgba(255,255,255,.5) 0%,rgba(255,255,255,0.3) 100%),url('${backgroundEstudar}');
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%,rgba(0, 0, 0, 0.6) 100%),url('${backgroundEstudar}');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -34,12 +34,35 @@ export const Container = styled.div`
     justify-content: center;
     }
 
+    a {
+    margin-top: 50px;
+    height: 60px;
+    width: 100%;
+    max-width: 450px;
+    background: ${(props) => props.theme.theme.button.background};
+    border-radius: 5px;
+    color: ${(props) => props.theme.theme.button.textColor};
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    font-size: 16px;
+    line-height: 60px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: ${darken(0.03, `${themes.color.primary}`)};
+    }
+  }
+
 `;
 
 export const Content = styled.div`
   justify-content: initial;
   z-index: 1;
-  color: #000;
+  color: #fff;
+  padding: 20px;
   margin: 30px auto;
   box-sizing: content-box;
   display: block;
@@ -58,26 +81,5 @@ export const Content = styled.div`
     font-size: 18px;
     line-height: 1.61;
     opacity: 1;
-  }
-
-  a {
-    margin-top: 50px;
-    height: 60px;
-    width: 100%;
-    background: ${(props) => props.theme.theme.button.background};
-    border-radius: 5px;
-    color: ${(props) => props.theme.theme.button.textColor};
-    font-weight: 700;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    border: 0;
-    font-size: 16px;
-    line-height: 60px;
-    transition: background 0.2s;
-
-    &:hover {
-      background: ${darken(0.03, `${themes.color.primary}`)};
-    }
   }
 `;

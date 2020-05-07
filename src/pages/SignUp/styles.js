@@ -72,9 +72,12 @@ export const AnimationContainer = styled.div`
 export const Background = styled.div`
   flex: 1;
 
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
     url(${backgroundSignUp}) no-repeat center;
   background-size: cover;
-
   animation: ${appearFromLeft} 1.3s;
 `;

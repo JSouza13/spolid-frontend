@@ -1,32 +1,107 @@
-import { lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: ${(props) => props.theme.theme.header.background};
-  padding: 5px 20px;
+  justify-content: center;
+  height: 80px;
+  display: flex;
   width: 100%;
+  top: 0px;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  background: ${(props) => props.theme.theme.header.background};
+  padding: 0px 30px;
+  transition: all 0.5s ease-in-out 0s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
-  top: 0;
-  position: sticky;
-  z-index: 3;
   color: ${(props) => props.theme.theme.header.text};
-
   @media (max-width: 650px) {
-    padding: 0 15px;
+    padding: 0 5px;
+  }
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0px;
+  nav {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  aside {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    button {
+      display: flex;
+      justify-content: center;
+      margin-right: 14px;
+
+      margin: 0px;
+      padding: 0px;
+      border: 0;
+      background: none;
+    }
+    .setTheme {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-right: 14px;
+
+      .toggleTheme {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: ${(props) => props.theme.theme.background};
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+
+        svg {
+          width: 25px;
+          height: 25px;
+          color: ${(props) => props.theme.theme.header.text};
+          &:hover {
+            color: #e02020;
+          }
+        }
+      }
+
+      @media (max-width: 650px) {
+        margin-right: 0px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      margin-left: 14px;
+    }
   }
 `;
 
 export const Badge = styled.button`
-  background: none;
-  border: 0;
-  position: relative;
-  margin: 5px 0px 5px;
-  padding: 0px 5px;
-
+  align-self: center;
+  margin: 0px;
+  padding: 0px;
   img {
-    display: block;
+    width: 56px;
+    height: 56px;
+    border-width: 3px;
+    border-style: solid;
+    border-image: initial;
     border-radius: 50%;
-    border: 2px solid ${lighten(0.2, '#e02020')};
+    border-color: #e02020;
     background: ${(props) => props.theme.theme.header.text};
   }
 `;
@@ -65,12 +140,17 @@ export const OptionProfileList = styled.div`
   position: absolute;
   width: 120px;
   left: calc(100% - 130px);
-  top: calc(100% + 10px);
+  top: calc(10% - 7px);
   background: ${(props) => props.theme.theme.header.background};
   border-radius: 4px;
   padding: 15px 5px;
   display: ${(props) => (props.visible ? 'block' : 'none')};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 650px) {
+    top: calc(10% + 12px);
+    left: calc(100% - 125px);
+  }
 
   button {
     height: 100%;
@@ -99,7 +179,7 @@ export const OptionProfileList = styled.div`
   &::before {
     content: '';
     position: absolute;
-    left: calc(50% - 5px);
+    left: calc(50% - 15px);
     top: -20px;
     width: 0;
     height: 0;
@@ -107,84 +187,42 @@ export const OptionProfileList = styled.div`
     border-right: 20px solid transparent;
     border-bottom: 20px solid ${(props) => props.theme.theme.header.background};
     @media (max-width: 650px) {
-      left: calc(50% - 8px);
-    }
-  }
-`;
-
-export const Content = styled.div`
-  max-height: 140px;
-  max-width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  nav {
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 10px 0;
-    }
-  }
-
-  aside {
-    display: flex;
-    align-items: center;
-    height: 100%;
-
-    button {
-      margin-top: 10px;
-      padding: 0px 5px;
-      border: 0;
-      background: none;
-      svg {
-        width: 25px;
-        height: 25px;
-        color: #e02020;
-      }
-    }
-
-    @media (max-width: 650px) {
-      margin-left: 30px;
+      left: calc(65% - 7px);
     }
   }
 `;
 
 export const Profile = styled.div`
-  padding: 0 5px;
   display: flex;
-  margin-left: 20px;
-  border-left: 1px groove ${(props) => props.theme.theme.separator};
-
-  @media (max-width: 650px) {
-    margin-left: 10px;
-  }
+  text-align: right;
+  padding: 12px 10px;
+  outline: 0px;
 
   div {
-    text-align: right;
-    margin-right: 10px;
+    margin-right: 18px;
+    align-self: center;
 
-    strong {
+    span {
+      font-weight: 700;
+      text-transform: uppercase;
       max-width: 200px;
       white-space: nowrap;
       overflow: hidden !important;
       text-overflow: ellipsis;
-      margin-top: 34px;
-      margin-left: 10px;
-      display: block;
       color: ${(props) => props.theme.theme.header.text};
     }
 
     @media (max-width: 650px) {
       margin-left: 0px;
 
-      strong {
+      span {
         display: none;
         width: 85px;
       }
     }
+  }
+
+  @media (max-width: 650px) {
+    padding: 0px;
   }
 `;
