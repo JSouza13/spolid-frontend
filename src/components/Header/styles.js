@@ -14,6 +14,7 @@ export const Container = styled.div`
   transition: all 0.5s ease-in-out 0s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   color: ${(props) => props.theme.theme.header.text};
+
   @media (max-width: 650px) {
     padding: 0 5px;
   }
@@ -140,7 +141,7 @@ export const OptionProfileList = styled.div`
   position: absolute;
   width: 120px;
   left: calc(100% - 130px);
-  top: calc(10% - 7px);
+  top: calc(10% + 20px);
   background: ${(props) => props.theme.theme.header.background};
   border-radius: 4px;
   padding: 15px 5px;
@@ -148,7 +149,7 @@ export const OptionProfileList = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 650px) {
-    top: calc(10% + 12px);
+    top: calc(10% + 11px);
     left: calc(100% - 125px);
   }
 
@@ -179,7 +180,7 @@ export const OptionProfileList = styled.div`
   &::before {
     content: '';
     position: absolute;
-    left: calc(50% - 15px);
+    left: calc(50% - 16px);
     top: -20px;
     width: 0;
     height: 0;
