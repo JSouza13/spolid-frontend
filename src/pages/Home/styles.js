@@ -1,9 +1,18 @@
 import { darken } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import themes from '~/styles/themes/light';
 
 import backgroundEstudar from '../../assets/background.png';
+
+const appearOpac = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
 
@@ -14,6 +23,8 @@ export const Container = styled.div`
   display:flex;
   flex-direction: column;
   align-items: center;
+
+  animation: ${appearOpac} 1.3s;
 
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%,rgba(0, 0, 0, 0.6) 100%),url('${backgroundEstudar}');
   background-size: cover;

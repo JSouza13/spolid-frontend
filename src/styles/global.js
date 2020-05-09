@@ -24,7 +24,6 @@ export default createGlobalStyle`
     background-color: ${(props) => props.theme.theme.background};
     color: ${(props) => props.theme.theme.trash};;
     -webkit-font-smoothing: antialiased !important;
-    transition: all 0.5s ease-in-out 0s;
   }
 
   body, input, button {

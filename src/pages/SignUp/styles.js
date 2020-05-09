@@ -14,6 +14,10 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 50vw;
+
+  @media (max-width: 820px) {
+    max-width: 100vw;
+  }
 `;
 
 const appearFromLeft = keyframes`
@@ -24,6 +28,15 @@ const appearFromLeft = keyframes`
   to {
     opacity: 1;
     transform: translateX(0px);
+  }
+`;
+
+const appearOpac = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 `;
 
@@ -79,5 +92,6 @@ export const Background = styled.div`
     ),
     url(${backgroundSignUp}) no-repeat center;
   background-size: cover;
-  animation: ${appearFromLeft} 1.3s;
+
+  animation: ${appearOpac} 1.3s;
 `;
