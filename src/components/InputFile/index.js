@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
 
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
@@ -14,7 +14,20 @@ export const InputFile = ({
 }) => {
   const inputRef = useRef(null);
 
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
   const { fieldName, defaultValue = '', registerField, error } = useField(name);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+
+    setIsFilled(!!inputRef.current?.value);
+  }, []);
 
   useEffect(() => {
     registerField({
@@ -34,7 +47,7 @@ export const InputFile = ({
         )}
       </Label>
 
-      <Content error={error}>
+      <Content error={error} isFocused={isFocused} isFilled={isFilled}>
         {label ? (
           <label htmlFor={fieldName}>
             {Icon && <Icon size={20} />}
@@ -43,9 +56,10 @@ export const InputFile = ({
         ) : null}
 
         <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
           ref={inputRef}
           id={fieldName}
-          className={error ? 'has-error' : ''}
           defaultValue={defaultValue}
           {...rest}
         />

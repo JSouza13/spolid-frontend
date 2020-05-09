@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Label = styled.div`
   label {
@@ -37,6 +37,12 @@ export const Content = styled.div`
       padding-top: 3px;
       color: ${(props) => props.theme.theme.input.color};
     }
+
+    ${(props) =>
+      props.isFocused &&
+      css`
+        border-color: ${props.theme.theme.button.background};
+      `}
   }
 `;
 

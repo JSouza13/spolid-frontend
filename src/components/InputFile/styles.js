@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Label = styled.div`
   label {
@@ -41,17 +41,6 @@ export const Content = styled.div`
     svg {
       margin-right: 16px;
       color: ${(props) => props.theme.theme.input.color};
-      ${(props) =>
-        props.isFocused &&
-        css`
-          color: ${props.theme.theme.button.background};
-          border-color: ${props.theme.theme.button.background};
-        `}
-      ${(props) =>
-        props.isFilled &&
-        css`
-          color: ${props.theme.theme.button.background};
-        `}
     }
   }
 `;
