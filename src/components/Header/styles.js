@@ -104,6 +104,10 @@ export const Badge = styled.button`
     border-radius: 50%;
     border-color: #e02020;
     background: ${(props) => props.theme.theme.header.text};
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;
 

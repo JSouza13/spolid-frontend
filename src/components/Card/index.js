@@ -8,7 +8,7 @@ import { Container } from './styles';
 export default function Card({ id, Title, Provider, Price, ImgUrl }) {
   return (
     <Container imgUrl={ImgUrl}>
-      <Link to={`/curso/${id}`}>
+      <Link to={`/course/${id}`}>
         <div className="__img" />
         <div className="__img--hover" />
 

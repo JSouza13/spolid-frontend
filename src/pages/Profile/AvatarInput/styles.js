@@ -1,12 +1,16 @@
-import { lighten } from 'polished';
 import styled from 'styled-components';
 
-import themes from '~/styles/themes/light';
-
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 10px;
+  position: relative;
+  flex-shrink: 0;
+  border-width: 4px;
+  border-style: solid;
+  border-color: #e02020;
+  border-image: initial;
+  border-radius: 50%;
 
   label {
     cursor: pointer;
@@ -16,11 +20,10 @@ export const Container = styled.div`
     }
 
     img {
-      height: 120px;
-      width: 120px;
+      width: 104px;
+      height: 104px;
+      opacity: 1;
       border-radius: 50%;
-      border: 2px solid ${lighten(0.2, '#e02020')};
-      background: ${lighten(0.7, `${themes.color.primary}`)};
     }
 
     input {

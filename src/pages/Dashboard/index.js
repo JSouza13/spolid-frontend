@@ -22,7 +22,7 @@ export default function Dashboard() {
         <ul>
           <Card
             id={1}
-            Title="Matemática básica"
+            Title="React"
             Provider="Pedro Augusto"
             Price={50}
             ImgUrl={course1}

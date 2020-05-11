@@ -1,23 +1,15 @@
 import React from 'react';
 
+import course12 from '~/assets/course-12.jpg';
+
 import Leasson from './Leasson';
-import { Container, Classes, Content } from './styles';
+import { Container, Content } from './styles';
 
 export default function Curso() {
   return (
     <Container>
       <Content>
-        <Leasson />
-        <Classes>
-          <ul>
-            <li>aula 01</li>
-            <li>aula 02</li>
-            <li>aula 03</li>
-            <li>aula 04</li>
-            <li>aula 05</li>
-            <li>aula 06</li>
-          </ul>
-        </Classes>
+        <Leasson Title="React" src={course12} />
       </Content>
     </Container>
   );

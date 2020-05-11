@@ -24,13 +24,13 @@ export default function Routes() {
       <Route path="/forgot" exact component={ForgotPassword} />
       <Route path="/reset/:tokenTemp" exact component={ResetPassword} />
 
-      <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/profile" component={Profile} isPrivate />
-      <Route path="/instructor" component={Instructor} isPrivate />
-      <Route path="/course/create" component={CreateCourse} isPrivate />
-      <Route path="/course/1" component={Curso} isPrivate />
+      <Route path="/dashboard" exact component={Dashboard} isPrivate />
+      <Route path="/profile" exact component={Profile} isPrivate />
+      <Route path="/instructor" exact component={Instructor} isPrivate />
+      <Route path="/course/create" exact component={CreateCourse} isPrivate />
+      <Route path="/course/1" exact component={Curso} isPrivate />
 
-      <Route component={NotFound} />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 }
