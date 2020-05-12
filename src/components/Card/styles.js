@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1;
   background: ${(props) => props.theme.theme.background};
   max-width: 350px;

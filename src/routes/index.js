@@ -28,7 +28,7 @@ export default function Routes() {
       <Route path="/profile" exact component={Profile} isPrivate />
       <Route path="/instructor" exact component={Instructor} isPrivate />
       <Route path="/course/create" exact component={CreateCourse} isPrivate />
-      <Route path="/course/1" exact component={Curso} isPrivate />
+      <Route path="/course/1" component={Curso} isPrivate />
 
       <Route path="*" component={NotFound} />
     </Switch>

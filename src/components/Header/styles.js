@@ -1,22 +1,24 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  justify-content: center;
-  height: 80px;
   display: flex;
-  width: 100%;
+  justify-content: center;
   top: 0px;
+  position: sticky;
+  height: 80px;
+  width: 100%;
+  padding: 0px 30px;
   z-index: 9999;
   opacity: 1;
+  transform: translateY(0px);
   visibility: visible;
   background: ${(props) => props.theme.theme.header.background};
-  padding: 0px 30px;
-  transition: all 0.5s ease-in-out 0s;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out 0s;
   color: ${(props) => props.theme.theme.header.text};
+  box-shadow: 0 8px 6px -6px ${(props) => props.theme.theme.boxShadow};
 
   @media (max-width: 650px) {
-    padding: 0 5px;
+    padding: 0px 20px;
   }
 `;
 
@@ -28,11 +30,14 @@ export const Content = styled.div`
   nav {
     display: flex;
     align-items: center;
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
+    max-width: 40vw;
+    a {
+      text-decoration: none;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
     }
   }
 
@@ -40,6 +45,7 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     height: 100%;
+    max-width: 40vw;
 
     button {
       display: flex;
@@ -55,24 +61,30 @@ export const Content = styled.div`
       position: relative;
       display: flex;
       justify-content: center;
+      justify-content: center;
       margin-right: 14px;
 
       .toggleTheme {
-        width: 46px;
-        height: 46px;
+        width: 100%;
+        height: auto;
+        padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
-        background-color: ${(props) => props.theme.theme.background};
+        background-color: ${(props) =>
+          props.theme.theme.header.backgroundInput};
+
         border-width: initial;
         border-style: none;
         border-color: initial;
         border-image: initial;
 
         svg {
-          width: 25px;
-          height: 25px;
+          width: 100%;
+          min-width: 16px;
+          height: auto;
+          min-height: 16px;
           color: ${(props) => props.theme.theme.header.text};
           &:hover {
             color: #e02020;
@@ -96,8 +108,12 @@ export const Badge = styled.button`
   margin: 0px;
   padding: 0px;
   img {
-    width: 56px;
-    height: 56px;
+    width: 100%;
+    max-width: 56px;
+    min-width: 42px;
+    height: auto;
+    max-height: 56px;
+    min-height: 42px;
     border-width: 3px;
     border-style: solid;
     border-image: initial;
@@ -145,7 +161,7 @@ export const OptionProfileList = styled.div`
   position: absolute;
   width: 120px;
   left: calc(100% - 130px);
-  top: calc(10% + 20px);
+  top: calc(100% + 5px);
   background: ${(props) => props.theme.theme.header.background};
   border-radius: 4px;
   padding: 15px 5px;
@@ -153,7 +169,6 @@ export const OptionProfileList = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 650px) {
-    top: calc(10% + 11px);
     left: calc(100% - 125px);
   }
 
@@ -208,6 +223,7 @@ export const Profile = styled.div`
     align-self: center;
 
     span {
+      font-size: 16px;
       font-weight: 700;
       text-transform: uppercase;
       max-width: 200px;

@@ -2,23 +2,30 @@ export default {
   title: 'dark',
 
   header: {
-    background: '#333333',
+    background: '#111116',
     text: '#FFFAFB',
+    backgroundInput: '#19181f',
   },
+
+  textTitle: {
+    subTitle: '#87868b',
+  },
+
+  boxShadow: 'rgba(0, 0, 0, 0.2)',
 
   h1: '#C0C0C0',
   inputColor: '#333333',
   text: '#f5f5f5',
   trash: '#999999',
 
-  box: '#333333',
+  box: '#232229',
 
   modal: {
     background: '#333333',
     inputColor: '#C0C0C0',
   },
 
-  background: '#212121',
+  background: '#19171f',
 
   color: {
     primary: '#C91C1C',

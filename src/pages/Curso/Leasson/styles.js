@@ -1,27 +1,160 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const appearOpac = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
-  max-width: 1366px;
   align-items: flex-start;
   flex: 1 1 0%;
   padding: 71px 30px;
   overflow: hidden;
 
-  aside {
-    width: 350px;
-    margin-left: 30px;
-    display: initial;
-    background: ${(props) => props.theme.theme.box};
-    border-radius: 5px;
-    overflow: hidden;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    place-content: center;
+    padding: 25px 20px;
+  }
+`;
 
+export const Complete = styled.div`
+  ${(props) =>
+    !props.isComplete &&
+    css`
+      /* color: ${props.theme.theme.button.background}; */
+      background-color:gray;
+      color: darkgray;
+    `}
+  ${(props) =>
+    props.isComplete &&
+    css`
+      /* color: ${props.theme.theme.button.background}; */
+      background-color:springgreen;
+      color: white;
+    `}
+`;
+
+export const Player = styled.div`
+  width: 100%;
+  min-width: 0px;
+  flex: 1 1 0%;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      color: #fff;
+
+      @media (max-width: 1080px) {
+        margin-right: 20px;
+      }
+
+      @media (max-width: 1330px) {
+        strong,
+        span {
+          display: block;
+        }
+      }
+
+      strong {
+        font-size: 20px;
+        color: #e02020;
+        font-weight: 700;
+
+        @media (max-width: 768px) {
+          font-size: 17px;
+        }
+
+        @media (max-width: 1080px) {
+          font-size: 19px;
+        }
+      }
+
+      span {
+        margin: 10px 0px 0px;
+        font-size: 16px;
+        font-weight: 700;
+        color: ${(props) => props.theme.theme.textTitle.subTitle};
+
+        @media (max-width: 768px) {
+          font-size: 17px;
+        }
+
+        @media (max-width: 1080px) {
+          font-size: 15px;
+        }
+
+        @media (max-width: 1330px) {
+          padding: 0px;
+          margin: 6px 0px 0px;
+        }
+      }
+    }
+  }
+
+  animation: ${appearOpac} 0.2s;
+`;
+
+export const Nav = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: baseline;
+  padding: 0.35rem 0.65rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  color: ${(props) => props.theme.theme.textTitle.subTitle};
+  background: ${(props) => props.theme.theme.box};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  p {
+    margin-left: 0.5rem;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  svg {
+    color: #e02020;
+  }
+`;
+
+export const Menu = styled.div`
+  margin-left: 30px;
+  border-radius: 5px;
+  width: 350px;
+  display: initial;
+  background: ${(props) => props.theme.theme.box};
+  overflow: hidden;
+
+  ${(props) =>
+    !props.isVisible &&
+    css`
+      display: none;
+    `}
+  aside {
     header {
       display: flex;
       align-items: center;
       padding: 30px;
-      background-color: rgb(40, 39, 47);
-
+      border-radius: 5px;
+      background: ${(props) => props.theme.theme.box};
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       img {
         width: 50px;
         margin-right: 15px;
@@ -43,25 +176,17 @@ export const Container = styled.div`
       margin-inline-start: 0px;
       margin-inline-end: 0px;
       padding-inline-start: 40px;
+      padding-inline-end: 20px;
 
       li {
         font-size: 14px;
         font-weight: 600;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         position: relative;
         z-index: 5;
         color: ${(props) => props.theme.theme.text};
         cursor: pointer;
-
-        &:first-child::before {
-          display: none;
-        }
-
-        &::before {
-          display: none;
-          bottom: 50%;
-        }
 
         button {
           cursor: pointer;
@@ -93,17 +218,16 @@ export const Container = styled.div`
             box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 6px;
             background: #e02020;
           }
-        }
 
-        &::before,
-        &::after {
-          content: '';
-          left: 4px;
-          width: 2px;
-          top: 60%;
-          height: calc(100% + 30px);
-          position: absolute;
-          background: rgb(68, 67, 75);
+          ${(props) =>
+            props.onFocus &&
+            css`
+              background: #e02020;
+            `}
+        } /*Button*/
+
+        &:first-child::before {
+          display: none;
         }
 
         &:hover {
@@ -113,6 +237,23 @@ export const Container = styled.div`
             background: #e02020;
           }
         }
+
+        ::before {
+          top: auto;
+          bottom: 50%;
+        }
+
+        &::before,
+        &::after {
+          content: '';
+          left: 4px;
+          width: 2px;
+          top: 40%;
+          height: calc(100% + 30px);
+          position: absolute;
+          background: rgb(68, 67, 75);
+        }
+
         &:last-of-type {
           &::before {
             top: auto;
@@ -127,12 +268,17 @@ export const Container = styled.div`
             content: '';
             left: 4px;
             width: 2px;
-            top: 60%;
+            top: 40%;
             height: calc(100% + 30px);
             position: absolute;
-            background: rgb(40, 39, 44);
+            background: transparent;
           }
         }
+        ${(props) =>
+          props.onFocus &&
+          css`
+            background: #e02020;
+          `}
       }
 
       li + li {
@@ -140,27 +286,10 @@ export const Container = styled.div`
       }
     }
   }
-`;
 
-export const Complete = styled.div`
-  ${(props) =>
-    !props.isComplete &&
-    css`
-      /* color: ${props.theme.theme.button.background}; */
-      background-color:gray;
-      color: darkgray;
-    `}
-  ${(props) =>
-    props.isComplete &&
-    css`
-      /* color: ${props.theme.theme.button.background}; */
-      background-color:springgreen;
-      color: white;
-    `}
-`;
-
-export const Player = styled.div`
-  width: 100%;
-  min-width: 0px;
-  flex: 1 1 0%;
+  @media (max-width: 768px) {
+    display: initial;
+    width: 100%;
+    margin: 20px 0px 0px;
+  }
 `;

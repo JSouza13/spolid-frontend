@@ -2,23 +2,30 @@ export default {
   title: 'light',
 
   header: {
-    background: '#FFFFFF',
+    background: '#f0f0f5',
     text: '#1C1C1C',
+    backgroundInput: '#dcdce6',
   },
+
+  textTitle: {
+    subTitle: '#67666e',
+  },
+
+  boxShadow: 'rgba(0, 0, 0, 0.2)',
 
   h1: '#333333',
   inputColor: '#333333',
   text: '#000000',
   trash: '#333333',
 
-  box: '#dcdce6',
+  box: '#f0f0f5',
 
   modal: {
     background: '#f0f0f5',
     inputColor: '#C0C0C0',
   },
 
-  background: '#f3f2f1',
+  background: '#dcdce6',
 
   color: {
     primary: '#C91C1C',
@@ -50,7 +57,7 @@ export default {
   },
 
   input: {
-    background: '#f0f0f5',
+    background: '#dcdce6',
     color: '#333333',
   },
 };

@@ -10,6 +10,7 @@ const appearFromLeft = keyframes`
     transform: translateX(0px);
   }
 `;
+
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -20,7 +21,6 @@ export const Content = styled.div`
   max-width: 1366px;
   align-items: flex-start;
   flex: 1 1 0%;
-  padding: 40px 50px;
   overflow: hidden;
 `;
 

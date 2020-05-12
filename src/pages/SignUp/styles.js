@@ -3,23 +3,6 @@ import styled, { keyframes } from 'styled-components';
 
 import backgroundSignUp from '../../assets/backgroundSignUp.png';
 
-export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: stretch;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 50vw;
-
-  @media (max-width: 820px) {
-    max-width: 100vw;
-  }
-`;
-
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
@@ -37,6 +20,35 @@ const appearOpac = keyframes`
   }
   to {
     opacity: 1;
+  }
+`;
+
+export const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+
+  @media (max-width: 820px) {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+      ),
+      url(${backgroundSignUp}) no-repeat center;
+    background-size: cover;
+
+    animation: ${appearOpac} 1.3s;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 50vw;
+
+  @media (max-width: 820px) {
+    max-width: 100vw;
   }
 `;
 
