@@ -50,64 +50,64 @@ export const Player = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-
-    .title {
-      display: flex;
-      flex-direction: column;
-      place-content: center;
-      color: #fff;
-
-      @media (max-width: 1080px) {
-        margin-right: 20px;
-      }
-
-      @media (max-width: 1330px) {
-        strong,
-        span {
-          display: block;
-        }
-      }
-
-      strong {
-        font-size: 20px;
-        color: #e02020;
-        font-weight: 700;
-
-        @media (max-width: 768px) {
-          font-size: 17px;
-        }
-
-        @media (max-width: 1080px) {
-          font-size: 19px;
-        }
-      }
-
-      span {
-        margin: 10px 0px 0px;
-        font-size: 16px;
-        font-weight: 700;
-        color: ${(props) => props.theme.theme.textTitle.subTitle};
-
-        @media (max-width: 768px) {
-          font-size: 17px;
-        }
-
-        @media (max-width: 1080px) {
-          font-size: 15px;
-        }
-
-        @media (max-width: 1330px) {
-          padding: 0px;
-          margin: 6px 0px 0px;
-        }
-      }
-    }
   }
 
   animation: ${appearOpac} 0.2s;
 `;
 
-export const Nav = styled.div`
+export const LessonInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  color: #fff;
+
+  @media (max-width: 1080px) {
+    margin-right: 20px;
+  }
+
+  @media (max-width: 1330px) {
+    strong,
+    span {
+      display: block;
+    }
+  }
+
+  strong {
+    font-size: 20px;
+    color: #e02020;
+    font-weight: 700;
+
+    @media (max-width: 768px) {
+      font-size: 17px;
+    }
+
+    @media (max-width: 1080px) {
+      font-size: 19px;
+    }
+  }
+
+  span {
+    margin: 10px 0px 0px;
+    font-size: 16px;
+    font-weight: 700;
+    color: ${(props) => props.theme.theme.textTitle.subTitle};
+
+    @media (max-width: 768px) {
+      font-size: 17px;
+    }
+
+    @media (max-width: 1080px) {
+      font-size: 15px;
+    }
+
+    @media (max-width: 1330px) {
+      padding: 0px;
+      margin: 6px 0px 0px;
+    }
+  }
+`;
+
+export const LessonOptions = styled.div`
   display: flex;
   align-items: center;
   align-self: baseline;
@@ -128,13 +128,9 @@ export const Nav = styled.div`
     font-size: 12px;
     font-weight: bold;
   }
-
-  svg {
-    color: #e02020;
-  }
 `;
 
-export const Menu = styled.div`
+export const Sidebar = styled.aside`
   margin-left: 30px;
   border-radius: 5px;
   width: 350px;
@@ -143,147 +139,43 @@ export const Menu = styled.div`
   overflow: hidden;
 
   ${(props) =>
-    !props.isVisible &&
+    !props.visible &&
     css`
       display: none;
     `}
-  aside {
-    header {
-      display: flex;
-      align-items: center;
-      padding: 30px;
-      border-radius: 5px;
-      background: ${(props) => props.theme.theme.box};
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      img {
-        width: 50px;
-        margin-right: 15px;
-      }
 
-      strong {
-        color: ${(props) => props.theme.theme.text};
-        font-size: 20px;
-        line-height: 1.2;
-        font-weight: bold;
-      }
+  header {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+    background: ${(props) => props.theme.theme.box};
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    img {
+      width: 50px;
+      margin-right: 15px;
     }
 
-    ul {
-      position: relative;
-      margin: 30px;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 40px;
-      padding-inline-end: 20px;
+    strong {
+      color: ${(props) => props.theme.theme.text};
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: bold;
+    }
+  }
 
-      li {
-        font-size: 14px;
-        font-weight: 600;
-        display: flex;
-        align-items: baseline;
-        position: relative;
-        z-index: 5;
-        color: ${(props) => props.theme.theme.text};
-        cursor: pointer;
+  ul {
+    position: relative;
+    margin: 30px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    padding-inline-end: 20px;
 
-        button {
-          cursor: pointer;
-          position: relative;
-          width: 10px;
-          height: 10px;
-          margin-right: 30px;
-          padding: 0px;
-          flex-shrink: 0;
-          z-index: 2;
-          border-width: 0px;
-          border-style: initial;
-          border-color: initial;
-          border-image: initial;
-          background: rgb(68, 67, 75);
-          border-radius: 50%;
-          transition: all 0.2s ease 0s;
-          &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 250%;
-            height: 250%;
-            transform: translate(-50%, -50%);
-          }
-
-          &:hover {
-            box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 6px;
-            background: #e02020;
-          }
-
-          ${(props) =>
-            props.onFocus &&
-            css`
-              background: #e02020;
-            `}
-        } /*Button*/
-
-        &:first-child::before {
-          display: none;
-        }
-
-        &:hover {
-          color: #e02020;
-          button {
-            box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 6px;
-            background: #e02020;
-          }
-        }
-
-        ::before {
-          top: auto;
-          bottom: 50%;
-        }
-
-        &::before,
-        &::after {
-          content: '';
-          left: 4px;
-          width: 2px;
-          top: 40%;
-          height: calc(100% + 30px);
-          position: absolute;
-          background: rgb(68, 67, 75);
-        }
-
-        &:last-of-type {
-          &::before {
-            top: auto;
-            bottom: 50%;
-          }
-          &::after {
-            display: none;
-          }
-
-          &::before,
-          &::after {
-            content: '';
-            left: 4px;
-            width: 2px;
-            top: 40%;
-            height: calc(100% + 30px);
-            position: absolute;
-            background: transparent;
-          }
-        }
-        ${(props) =>
-          props.onFocus &&
-          css`
-            background: #e02020;
-          `}
-      }
-
-      li + li {
-        margin-top: 20px;
-      }
+    li + li {
+      margin-top: 20px;
     }
   }
 
@@ -292,4 +184,102 @@ export const Menu = styled.div`
     width: 100%;
     margin: 20px 0px 0px;
   }
+`;
+
+export const Lesson = styled.li`
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  z-index: 5;
+  color: ${(props) => props.theme.theme.text};
+  cursor: pointer;
+
+  button {
+    cursor: pointer;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-right: 30px;
+    padding: 0px;
+    flex-shrink: 0;
+    z-index: 2;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    background: rgb(68, 67, 75);
+    border-radius: 50%;
+    transition: all 0.2s ease 0s;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250%;
+      height: 250%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 6px;
+      background: #e02020;
+    }
+  } /*Button*/
+
+  &:first-child::before {
+    display: none;
+  }
+
+  &:hover {
+    color: #e02020;
+    button {
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 6px;
+      background: #e02020;
+    }
+  }
+
+  ::before {
+    top: auto;
+    bottom: 50%;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    left: 4px;
+    width: 2px;
+    top: 40%;
+    height: calc(100% + 30px);
+    position: absolute;
+    background: rgb(68, 67, 75);
+  }
+
+  &:last-of-type {
+    &::before {
+      top: auto;
+      bottom: 50%;
+    }
+    &::after {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      left: 4px;
+      width: 2px;
+      top: 40%;
+      height: calc(100% + 30px);
+      position: absolute;
+      background: transparent;
+    }
+  }
+
+  ${(props) =>
+    props.watched &&
+    css`
+      color: #04d361;
+    `}
 `;

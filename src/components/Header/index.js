@@ -41,7 +41,7 @@ export default function Header() {
           <Content>
             <nav>
               <Link to="/">
-                <img src={logo} alt="SPOLID" width="156" height="35" />
+                <img src={logo} alt="SPOLID" width="140" />
               </Link>
             </nav>
 

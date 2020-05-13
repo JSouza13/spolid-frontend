@@ -11,7 +11,6 @@
     "@unform/web": "^2.1.0",
     "axios": "^0.19.2",
     "customize-cra": "^0.9.1",
-    "dotenv": "^8.2.0",
     "history": "^4.10.1",
     "immer": "^6.0.2",
     "polished": "^3.5.1",

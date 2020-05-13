@@ -9,7 +9,7 @@ export default function Curso() {
   return (
     <Container>
       <Content>
-        <Leasson Title="React" src={course12} />
+        <Leasson Title="React" thumbnail_url={course12} />
       </Content>
     </Container>
   );

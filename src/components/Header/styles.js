@@ -17,7 +17,8 @@ export const Container = styled.div`
   color: ${(props) => props.theme.theme.header.text};
   box-shadow: 0 8px 6px -6px ${(props) => props.theme.theme.boxShadow};
 
-  @media (max-width: 650px) {
+  @media (max-width: 768px) {
+    height: 60px;
     padding: 0px 20px;
   }
 `;
@@ -27,6 +28,11 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 12px 0px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    padding: 0px;
+  }
   nav {
     display: flex;
     align-items: center;
@@ -34,9 +40,12 @@ export const Content = styled.div`
     a {
       text-decoration: none;
       img {
-        width: 100%;
+        width: 140px;
         height: auto;
         display: block;
+        @media (max-width: 768px) {
+          width: 112px;
+        }
       }
     }
   }
@@ -61,30 +70,27 @@ export const Content = styled.div`
       position: relative;
       display: flex;
       justify-content: center;
-      justify-content: center;
       margin-right: 14px;
 
       .toggleTheme {
-        width: 100%;
-        height: auto;
-        padding: 10px;
+        width: 46px;
+        height: 46px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
         background-color: ${(props) =>
           props.theme.theme.header.backgroundInput};
-
         border-width: initial;
         border-style: none;
         border-color: initial;
         border-image: initial;
 
         svg {
-          width: 100%;
-          min-width: 16px;
-          height: auto;
-          min-height: 16px;
+          height: 24;
+          width: 24;
+          stroke: currentcolor;
+          fill: currentcolor;
           color: ${(props) => props.theme.theme.header.text};
           &:hover {
             color: #e02020;
