@@ -5,7 +5,6 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,300&display=swap');
 
   * {
     margin: 0;
@@ -20,7 +19,6 @@ export default createGlobalStyle`
 
   html, body, #root {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
   }
 
   body {
@@ -30,8 +28,9 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
   }
 
-  body, input, button {
-    font-size: 18px;
+  body, input, button, a {
+    font: 16px 'Roboto Slab', serif;
+
   }
 
   h1, h2, h3, h4, h5, h6, strong {
@@ -77,12 +76,14 @@ export default createGlobalStyle`
   }
 
   a {
-    font-family: 'Roboto Slab', sans-serif;
-    font-size: 18px;
     text-decoration: none;
   }
 
   ul {
     list-style: none;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;

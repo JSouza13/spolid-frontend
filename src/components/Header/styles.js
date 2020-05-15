@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  top: 0px;
-  position: sticky;
+export const Container = styled.header`
+  background: ${(props) => props.theme.theme.header.background};
   height: 80px;
   width: 100%;
   padding: 0px 30px;
+  position: sticky;
   z-index: 9999;
-  opacity: 1;
-  transform: translateY(0px);
-  visibility: visible;
-  background: ${(props) => props.theme.theme.header.background};
-  transition: all 0.3s ease-in-out 0s;
+  display: flex;
+  justify-content: center;
+  top: 0px;
   color: ${(props) => props.theme.theme.header.text};
   box-shadow: 0 8px 6px -6px ${(props) => props.theme.theme.boxShadow};
 
@@ -25,9 +21,12 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 100%;
+  padding: 12px 0px;
+  margin: 0 auto;
+
   display: flex;
   justify-content: space-between;
-  padding: 12px 0px;
+  align-items: center;
 
   @media (max-width: 768px) {
     align-items: center;
@@ -73,27 +72,36 @@ export const Content = styled.div`
       margin-right: 14px;
 
       .toggleTheme {
-        width: 46px;
-        height: 46px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        border: 0;
         border-radius: 5px;
+        padding: 10px;
         background-color: ${(props) =>
           props.theme.theme.header.backgroundInput};
         border-width: initial;
         border-style: none;
         border-color: initial;
         border-image: initial;
+        @media (max-width: 768px) {
+          width: 36px;
+          height: 36px;
+        }
 
-        svg {
-          height: 24;
-          width: 24;
+        > svg {
+          height: 20;
+          width: 20;
           stroke: currentcolor;
           fill: currentcolor;
           color: ${(props) => props.theme.theme.header.text};
           &:hover {
             color: #e02020;
+          }
+
+          @media (max-width: 768px) {
+            width: 16px;
+            height: 16px;
           }
         }
       }
@@ -111,24 +119,21 @@ export const Content = styled.div`
 
 export const Badge = styled.button`
   align-self: center;
-  margin: 0px;
-  padding: 0px;
+
   img {
-    width: 100%;
-    max-width: 56px;
-    min-width: 42px;
-    height: auto;
-    max-height: 56px;
-    min-height: 42px;
-    border-width: 3px;
-    border-style: solid;
-    border-image: initial;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    border-color: #e02020;
+    border: 3px solid #e02020;
     background: ${(props) => props.theme.theme.header.text};
 
     &:hover {
       opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
     }
   }
 `;

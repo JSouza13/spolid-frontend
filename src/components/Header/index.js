@@ -41,7 +41,7 @@ export default function Header() {
           <Content>
             <nav>
               <Link to="/">
-                <img src={logo} alt="SPOLID" width="140" />
+                <img src={logo} alt="SPOLID" />
               </Link>
             </nav>
 
@@ -51,8 +51,6 @@ export default function Header() {
                   className="toggleTheme"
                   type="button"
                   onClick={toggleTheme}
-                  width={46}
-                  height={46}
                 >
                   {theme.title === 'light' ? (
                     <FiSunset size={25} />
