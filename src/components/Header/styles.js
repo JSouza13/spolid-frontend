@@ -179,10 +179,6 @@ export const OptionProfileList = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.5);
 
-  @media (max-width: 650px) {
-    left: calc(100% - 125px);
-  }
-
   button {
     height: 100%;
     font-size: 13px;
@@ -217,6 +213,10 @@ export const OptionProfileList = styled.div`
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-bottom: 20px solid ${(props) => props.theme.theme.header.background};
+    @media (max-width: 768px) {
+      left: calc(65% - 15px);
+    }
+
     @media (max-width: 650px) {
       left: calc(65% - 7px);
     }
