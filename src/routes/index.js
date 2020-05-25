@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
-import CreateCourse from '~/pages/CreateCourse';
 import Curso from '~/pages/Curso';
+import CreateCourse from '~/pages/Curso/CreateCourse';
 import Dashboard from '~/pages/Dashboard';
 import ForgotPassword from '~/pages/ForgotPassword';
 import Home from '~/pages/Home';
@@ -24,11 +24,11 @@ export default function Routes() {
       <Route path="/forgot" exact component={ForgotPassword} />
       <Route path="/reset/:tokenTemp" exact component={ResetPassword} />
 
-      <Route path="/dashboard" exact component={Dashboard} isPrivate />
-      <Route path="/profile" exact component={Profile} isPrivate />
-      <Route path="/instructor" exact component={Instructor} isPrivate />
+      <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/instructor" component={Instructor} isPrivate />
       <Route path="/course/create" exact component={CreateCourse} isPrivate />
-      <Route path="/course/1" component={Curso} isPrivate />
+      <Route path="/course/:id" exact component={Curso} isPrivate />
 
       <Route path="*" component={NotFound} />
     </Switch>

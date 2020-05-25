@@ -19,7 +19,6 @@ export default function user(state = INITIAL_STATE, action) {
         draft.profile = null;
         break;
       }
-
       default:
     }
   });

@@ -12,7 +12,7 @@ export const InputFile = ({
   icon: Icon,
   ...rest
 }) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef();
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);

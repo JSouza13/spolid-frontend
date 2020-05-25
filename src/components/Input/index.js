@@ -66,7 +66,7 @@ export const Input = ({ name, label, icon: Icon, ...rest }) => {
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  icon: PropTypes.element,
+  icon: PropTypes.elementType,
 };
 
 Input.defaultProps = {

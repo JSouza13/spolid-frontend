@@ -60,16 +60,12 @@ export const Content = styled.div`
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(216px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 265px);
+    grid-gap: 37px;
     list-style: none;
 
     p {
       margin: 0;
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
   }
 

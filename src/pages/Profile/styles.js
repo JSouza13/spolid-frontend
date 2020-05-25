@@ -63,6 +63,14 @@ export const AnimationContainer = styled.div`
       font-weight: bold;
     }
 
+    hr {
+      border: 0;
+      height: 1px;
+      width: 100%;
+      background: ${(props) => props.theme.theme.hr};
+      margin: 10px 0 20px;
+    }
+
     button {
       margin: 15px 0 0;
       height: 60px;

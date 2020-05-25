@@ -31,7 +31,7 @@ export default function Dashboard() {
             id={1}
             Title="Matemática básica"
             Provider="Pedro Augusto"
-            Price={50}
+            Price={49.99}
             ImgUrl={capaCurso}
           />
           <Card

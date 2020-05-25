@@ -126,6 +126,7 @@ export const Badge = styled.button`
     border-radius: 50%;
     border: 3px solid #e02020;
     background: ${(props) => props.theme.theme.header.text};
+    align-self: center;
 
     &:hover {
       opacity: 0.7;

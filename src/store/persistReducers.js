@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'spolid',
       storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'course'],
     },
     reducers
   );

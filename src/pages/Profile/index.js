@@ -16,7 +16,6 @@ export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.user.profile);
   const { theme } = useContext(ThemeContext);
-
   const [provider, setProvider] = useState(profile.provider);
 
   function handleProvider() {
@@ -35,6 +34,8 @@ export default function Profile() {
         <AnimationContainer>
           <Form initialData={profile} onSubmit={handleSubmit}>
             <AvatarInput name="avatar_id" />
+            {console.log(AvatarInput.toString)}
+
             <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
             <Input
               name="email"

@@ -7,6 +7,8 @@ export default {
     backgroundInput: '#19181f',
   },
 
+  hr: 'rgba(255, 255, 255, 0.2)',
+
   textTitle: {
     subTitle: '#87868b',
   },
