@@ -1,33 +1,43 @@
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 112px;
-  height: 112px;
-  margin-bottom: 10px;
+  margin-bottom: 32px;
   position: relative;
-  flex-shrink: 0;
-  border-width: 4px;
-  border-style: solid;
-  border-color: #e02020;
-  border-image: initial;
-  border-radius: 50%;
-
+  align-self: center;
+  img {
+    width: 186px;
+    height: 186px;
+    border-radius: 50%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #e02020;
+    border-image: initial;
+  }
   label {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #e02020;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    border: 0;
     cursor: pointer;
-
-    &:hover {
-      opacity: 0.7;
-    }
-
-    img {
-      width: 104px;
-      height: 104px;
-      opacity: 1;
-      border-radius: 50%;
-    }
-
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     input {
       display: none;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      color: #312e38;
+    }
+    &:hover {
+      background: ${shade(0.2, '#E02020')};
     }
   }
 `;

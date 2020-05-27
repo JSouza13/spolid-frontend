@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import Switch from 'react-switch';
@@ -13,10 +13,13 @@ import AvatarInput from './AvatarInput';
 import { Container, Content, AnimationContainer } from './styles';
 
 export default function Profile() {
+  const formRef = useRef(null);
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.user.profile);
   const { theme } = useContext(ThemeContext);
   const [provider, setProvider] = useState(profile.provider);
+
+  console.log(document.getElementById('avatar_id'));
 
   function handleProvider() {
     setProvider(!provider);
@@ -32,9 +35,8 @@ export default function Profile() {
     <Container>
       <Content>
         <AnimationContainer>
-          <Form initialData={profile} onSubmit={handleSubmit}>
+          <Form ref={formRef} initialData={profile} onSubmit={handleSubmit}>
             <AvatarInput name="avatar_id" />
-            {console.log(AvatarInput.toString)}
 
             <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
             <Input

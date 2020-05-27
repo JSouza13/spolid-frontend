@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FiCamera } from 'react-icons/fi';
 
-import { useField } from '@rocketseat/unform';
+import { useField } from '@unform/core';
 
 import api from '~/services/api';
 
@@ -12,17 +13,17 @@ export default function AvatarInput() {
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
-  const ref = useRef();
+  const AvatarRef = useRef();
 
   useEffect(() => {
-    if (ref.current) {
+    if (AvatarRef.current) {
       registerField({
         name: 'avatar_id',
-        ref: ref.current,
+        ref: AvatarRef.current,
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+  }, [AvatarRef, registerField]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -39,21 +40,20 @@ export default function AvatarInput() {
 
   return (
     <Container>
+      <img
+        src={preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'}
+        alt=""
+      />
       <label htmlFor="avatar">
-        <img
-          src={
-            preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
-          }
-          alt=""
-        />
+        <FiCamera />
 
         <input
           type="file"
-          id="avatar"
           accept="image/*"
+          id="avatar"
           data-file={file}
+          ref={AvatarRef}
           onChange={handleChange}
-          ref={ref}
         />
       </label>
     </Container>
