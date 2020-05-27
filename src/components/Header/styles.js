@@ -124,9 +124,11 @@ export const Badge = styled.button`
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    border: 3px solid #e02020;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #e02020;
+    border-image: initial;
     background: ${(props) => props.theme.theme.header.text};
-    align-self: center;
 
     &:hover {
       opacity: 0.7;
