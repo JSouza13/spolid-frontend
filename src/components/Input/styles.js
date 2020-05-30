@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import Tooltip from '../Tooltip';
+
 export const Label = styled.div`
   label {
     display: inline-block;
@@ -15,10 +17,21 @@ export const Container = styled.div`
   border: 2px solid ${(props) => props.theme.theme.input.background};
   border-radius: 10px;
   padding: 16px;
-  width: 100%;
-
   display: flex;
   align-items: center;
+
+  ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width};
+    `}
+
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: #c53030;
+    `}
 
   ${(props) =>
     props.isFocused &&
@@ -34,6 +47,22 @@ export const Container = styled.div`
 
   & + div {
     margin-top: 8px;
+  }
+
+  > span{
+    margin-right: 16px;
+    color: ${(props) => props.theme.theme.input.color};
+    ${(props) =>
+      props.isFocused &&
+      css`
+        color: ${props.theme.theme.button.background};
+        border-color: ${props.theme.theme.button.background};
+      `}
+    ${(props) =>
+      props.isFilled &&
+      css`
+        color: ${props.theme.theme.button.background};
+      `}
   }
 
   input {
@@ -77,16 +106,16 @@ export const Container = styled.div`
   }
 `;
 
-export const Error = styled.div`
+export const Error = styled(Tooltip)`
   height: 20px;
+  margin-left: 16px;
   svg {
-    margin: 0px;
+    margin: 0;
+    transition: color 2s;
   }
   span {
     background: #c53030;
     color: #fff;
-    &::before {
-      border-color: #c53030 transparent;
-    }
+    border-color: #c53030 transparent;
   }
 `;

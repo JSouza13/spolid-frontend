@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
 import { Input } from '~/components/Input';
+import Loading from '~/components/Loading';
 import { signInRequest } from '~/store/modules/auth/actions';
 import themes from '~/styles/themes/light';
 
@@ -42,17 +43,23 @@ export default function SignIn() {
               icon={FiMail}
               type="text"
               placeholder="E-mail"
+              width="100%"
             />
             <Input
               name="password"
               icon={FiLock}
               type="password"
               placeholder="Senha"
+              width="100%"
             />
 
-            <button type="submit">
-              {loading ? 'Carregando...' : 'Entrar'}
-            </button>
+            {loading ? (
+              <Loading color="#E02020" size={30} />
+            ) : (
+              <button type="submit" width="100%">
+                <strong>Entrar</strong>
+              </button>
+            )}
             <Link to="/forgot">Esqueci minha senha</Link>
           </Form>
           <Link to="/register">

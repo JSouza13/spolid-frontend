@@ -1,21 +1,20 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
 
-import { ErrorMessage, Content, Label } from './styles';
+import { Container, Error, Label } from './styles';
 
-export const TextArea = ({ name, label, ...rest }) => {
+export const TextArea = ({ name, label, icon: Icon, ...rest }) => {
   const inputRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
+  const { fieldName, defaultValue, error, registerField } = useField(name);
 
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  const handleInputFocus = useCallback(() => setIsFocused(true), []);
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
@@ -34,18 +33,24 @@ export const TextArea = ({ name, label, ...rest }) => {
   return (
     <>
       <Label>{label && <label htmlFor={fieldName}>{label}</label>}</Label>
+      <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
+        {Icon && <Icon size={20} />}
 
-      <Content error={error} isFocused={isFocused} isFilled={isFilled}>
         <textarea
+          autoComplete="new-password"
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
+          defaultValue={defaultValue}
           ref={inputRef}
           id={fieldName}
-          defaultValue={defaultValue}
           {...rest}
         />
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-      </Content>
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle size={20} color="#c53030" />
+          </Error>
+        )}
+      </Container>
     </>
   );
 };
@@ -53,8 +58,10 @@ export const TextArea = ({ name, label, ...rest }) => {
 TextArea.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
+  icon: PropTypes.elementType,
 };
 
 TextArea.defaultProps = {
   label: null,
+  icon: null,
 };

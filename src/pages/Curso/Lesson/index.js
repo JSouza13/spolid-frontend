@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiChevronsRight, FiChevronsLeft } from 'react-icons/fi';
 
 import PropTypes from 'prop-types';
 
 import ResponsivePlayer from '~/components/Video';
+import api from '~/services/api';
 
 import {
   Container,
@@ -14,45 +15,16 @@ import {
   Sidebar,
 } from './styles';
 
-const lessons = [
-  {
-    id: 1,
-    title: 'Criando um projeto do zero para seu portfólio',
-    url: 'https://www.youtube.com/watch?v=EhnXaybirdA',
-    watched: false,
-    played: 0,
-  },
-  {
-    id: 2,
-    title: 'Menu de subcategorias com recursividade no JavaScript',
-    url: 'https://www.youtube.com/watch?v=-VQPimwkstM',
-    watched: false,
-    played: 0,
-  },
-  {
-    id: 3,
-    title: 'Typescript, Carreira & AdonisJS',
-    url: 'https://www.youtube.com/watch?v=sEE-3P9kKyE',
-    watched: false,
-    played: 0,
-  },
-  {
-    id: 4,
-    title: 'Animações do After Effects no React Native com Lottie',
-    url: 'https://www.youtube.com/watch?v=V3QGW2PgKKY',
-    watched: false,
-    played: 0,
-  },
-];
-
-function Leasson({ Title, thumbnail_url }) {
+function Leasson({ course_id }) {
+  const [lessons, setLessons] = useState([]);
   const [itemSelect, SetItemSelect] = useState(
     JSON.parse(localStorage.getItem('@Spolid:SelectClass')) || lessons[0]
   );
   const [watchComplete, setWatchComplete] = useState(false);
   const [siderbarVisible, setSiderbarVisible] = useState(true);
   const [progressTime, setProgressTime] = useState(null);
-
+  const [course, setCourse] = useState({});
+  const [image, setImage] = useState({});
   function handleWatchComplete(data) {
     setProgressTime(data.playedSeconds);
 
@@ -70,13 +42,41 @@ function Leasson({ Title, thumbnail_url }) {
     localStorage.setItem('@Spolid:SelectClass', JSON.stringify(item));
   }
 
+  useEffect(() => {
+    async function loadLessons() {
+      const response = await api.get(`/courses/${course_id}/lesson`, {
+        params: {
+          showAll: true,
+        },
+      });
+
+      const data = response.data.map((lesson) => ({
+        ...lesson,
+      }));
+
+      setLessons(data);
+    }
+
+    loadLessons();
+  }, [course_id]);
+
+  useEffect(() => {
+    async function loadCourses() {
+      const { data } = await api.get(`/courses/${course_id}`);
+      setCourse(data);
+      setImage(data.image);
+    }
+
+    loadCourses();
+  }, [course_id]);
+
   return (
     <Container>
       <Player>
         <header>
           <LessonInfo>
             <strong>{itemSelect.title}</strong>
-            {Title && <span>{Title}</span>}
+            {course.title && <span>{course.title}</span>}
           </LessonInfo>
 
           <LessonOptions onClick={handleSidebarToggle}>
@@ -89,7 +89,7 @@ function Leasson({ Title, thumbnail_url }) {
           </LessonOptions>
         </header>
         <ResponsivePlayer
-          url={itemSelect.url}
+          url={itemSelect.video_url}
           onProgress={handleWatchComplete}
           seek={
             itemSelect.played < progressTime ? progressTime : itemSelect.played
@@ -98,8 +98,8 @@ function Leasson({ Title, thumbnail_url }) {
       </Player>
       <Sidebar visible={siderbarVisible}>
         <header>
-          {thumbnail_url && <img src={thumbnail_url} alt={Title} />}
-          {Title && <strong>{Title}</strong>}
+          {image && <img src={image.url} alt={course.title} />}
+          {course.title && <strong>{course.title}</strong>}
         </header>
         <ul>
           {lessons.map((lesson) => (
@@ -122,9 +122,8 @@ function Leasson({ Title, thumbnail_url }) {
   );
 }
 
-Leasson.propTypes = {
-  Title: PropTypes.string.isRequired,
-  thumbnail_url: PropTypes.string.isRequired,
-};
-
 export default Leasson;
+
+Leasson.propTypes = {
+  course_id: PropTypes.string.isRequired,
+};

@@ -1,77 +1,95 @@
-import React, { useRef, useState } from 'react';
-import {
-  FiBookOpen,
-  // FiYoutube,
-  FiImage,
-  FiDollarSign,
-  FiFileText,
-} from 'react-icons/fi';
+import React, { useRef, useCallback, useState } from 'react';
+import { FiBookOpen, FiImage, FiDollarSign, FiFileText } from 'react-icons/fi';
 
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
+import { ImageInput } from '~/components/ImageInput';
 import { Input } from '~/components/Input';
-import { InputFile } from '~/components/InputFile';
+import Loading from '~/components/Loading';
 import { TextArea } from '~/components/TextArea';
 import api from '~/services/api';
 import history from '~/services/history';
+import getValidationErrors from '~/utils/getValidationErrors';
 
 import { Container } from './styles';
 
 export default function NewIncident() {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const [preview, setPreview] = useState(null);
   const [image, setImage] = useState(null);
   // const [video, setVideo] = useState(null);
+  const [file, setFile] = useState();
 
-  const handleSubmit = async (data) => {
-    setLoading(true);
+  const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
-    try {
-      const schema = Yup.object().shape({
-        title: Yup.string()
-          .max(30, 'O Título precisa ter no máximo 30 caracteres')
-          .required('Campo obrigatório'),
-        description: Yup.string()
-          .max(125, 'A descrição pode ter no máximo 125 caracteres')
-          .required('Campo obrigatório'),
-        value: Yup.string().required('Campo obrigatório'),
-      });
-      // eslint-disable-next-line no-console
-      console.log(schema);
-      // await schema.validate(
-      //   { data },
-      //   {
-      //     abortEarly: false,
-      //   }
-      // );
-      data.image_id = image;
-      // data.video_id = video;
+  const handleSubmit = useCallback(
+    async (data) => {
+      try {
+        formRef.current.setErrors({});
 
-      const response = await api.post('courses', data);
+        setLoading(true);
 
-      // eslint-disable-next-line no-console
-      console.log(response);
-      setLoading(false);
-
-      history.push('/instructor');
-    } catch (err) {
-      const validationErrors = {};
-      if (err instanceof Yup.ValidationError) {
-        err.inner.forEach((error) => {
-          validationErrors[error.path] = error.message;
+        const schema = Yup.object().shape({
+          title: Yup.string()
+            .max(30, 'O Título precisa ter no máximo 30 caracteres')
+            .required('Título deve ser informado'),
+          description: Yup.string()
+            .max(300, 'A descrição pode ter no máximo 300 caracteres')
+            .required('Descrição deve ser informada'),
+          value: Yup.number()
+            .typeError('O preço deve ser um número')
+            .positive('O preço deve ser positivo')
+            .required('Preço deve ser informado'),
+          image_id: Yup.mixed()
+            .required('Uma imagem deve ser enviada')
+            .test(
+              'fileFormat',
+              'Formato do arquivo inválido',
+              () => file && SUPPORTED_FORMATS.includes(file.type)
+            ),
         });
-        formRef.current.setErrors(validationErrors);
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        data.image_id = image;
+        // data.video_id = video;
+
+        const response = await api.post('courses', data);
+
+        setLoading(false);
+
+        history.push(`/course/${response.data.id}/lesson`);
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current.setErrors(errors);
+
+          setLoading(false);
+        }
       }
-      setLoading(false);
-    }
-  };
+    },
+    [SUPPORTED_FORMATS, file, image]
+  );
 
   const handleChangeImg = async (e) => {
     e.preventDefault();
     const data = new FormData();
 
     data.append('file', e.target.files[0]);
+    setFile(e.target.files?.[0]);
+    const img = e.target.files?.[0];
+
+    if (!img) {
+      setPreview(null);
+    } else {
+      const previewURL = URL.createObjectURL(img);
+      setPreview(previewURL);
+    }
 
     const response = await api.post('files', data, {
       // onUploadProgress: (progressEvent) => {
@@ -115,15 +133,15 @@ export default function NewIncident() {
           icon={FiFileText}
         />
 
-        <InputFile
-          type="file"
+        <ImageInput
           name="image_id"
-          accept="image/*"
           label="Insira uma imagem"
           onChange={handleChangeImg}
           icon={FiImage}
           data-file={image}
+          preview={preview}
           placeholder="Imagem de capa"
+          width="50%"
         />
 
         {/* <InputFile
@@ -145,9 +163,13 @@ export default function NewIncident() {
           prefix="R$"
         />
 
-        <button type="submit">
-          <strong>{loading ? 'Carregando...' : 'Salvar'}</strong>
-        </button>
+        {loading ? (
+          <Loading color="#E02020" size={30} />
+        ) : (
+          <button type="submit" width="50%">
+            <strong>Salvar</strong>
+          </button>
+        )}
       </Form>
     </Container>
   );

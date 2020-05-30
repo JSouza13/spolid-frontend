@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
 import { Input } from '~/components/Input';
+import Loading from '~/components/Loading';
 import { resetRequest } from '~/store/modules/auth/actions';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
@@ -52,6 +53,7 @@ export default function ResetPassword() {
               icon={FiLock}
               type="password"
               placeholder="Senha"
+              width="100%"
             />
 
             <Input
@@ -59,11 +61,16 @@ export default function ResetPassword() {
               icon={FiLock}
               type="password"
               placeholder="Confirme sua senha"
+              width="100%"
             />
 
-            <button type="submit">
-              {loading ? 'Carregando...' : 'Salvar'}
-            </button>
+            {loading ? (
+              <Loading color="#E02020" size={30} />
+            ) : (
+              <button type="submit" width="100%">
+                <strong>Salvar</strong>
+              </button>
+            )}
           </Form>
           <Link to="/logon">
             <FiArrowLeft />

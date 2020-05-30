@@ -10,7 +10,7 @@ import { Content, Pagination } from './styles';
 
 export default function Instructor() {
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState({ page: 1 });
+  const [query, setQuery] = useState({ currentPage: 1 });
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ export default function Instructor() {
     async function loadCourses() {
       setLoading(true);
 
-      const response = await api.get('courses', {
+      const response = await api.get('/instructor/courses', {
         params: {
-          page: query.page,
+          currentPage: query.currentPage,
         },
       });
 
@@ -40,54 +40,56 @@ export default function Instructor() {
     return () => {
       isMounted = false;
     };
-  }, [query.page, query.search]);
+  }, [query.currentPage, query.search]);
 
   async function handlePageChange(next) {
-    const nextPage = query.page + (next ? 1 : -1);
+    const nextPage = query.currentPage + (next ? 1 : -1);
 
     setQuery({
       ...query,
-      page: nextPage,
+      currentPage: nextPage,
     });
   }
 
   return (
-    <Content>
-      <header>
-        <h1>Meus cursos</h1>
-        <Link to="/course/create">Novo curso</Link>
-      </header>
-      <hr />
-      {!loading ? (
-        <>
-          {courses.length > 0 ? (
-            <ul>
-              {courses.map((course) => (
-                <CourseCard key={course.id.toString()} course={course} />
-              ))}
-            </ul>
-          ) : (
-            <span>Whoops! Nenhum curso encontrado.</span>
-          )}
-          <Pagination>
-            {query.page > 1 && (
-              <button onClick={() => handlePageChange(false)} type="button">
-                <MdChevronLeft color="#fff" size={30} />
-              </button>
-            )}
-
-            <span>{query.page}</span>
-
-            {courses.length > 0 && (
-              <button onClick={() => handlePageChange(true)} type="button">
-                <MdChevronRight color="#fff" size={30} />
-              </button>
-            )}
-          </Pagination>
-        </>
+    <>
+      {loading ? (
+        <Loading color="#E02020" size={60} />
       ) : (
-        <Loading />
+        <Content>
+          <header>
+            <h1>Meus cursos</h1>
+            <Link to="/course/create">Novo curso</Link>
+          </header>
+          <hr />
+          <>
+            {courses.length > 0 ? (
+              <ul>
+                {courses.map((course) => (
+                  <CourseCard key={course.id.toString()} course={course} />
+                ))}
+              </ul>
+            ) : (
+              <span>Whoops! Nenhum curso encontrado.</span>
+            )}
+            <Pagination>
+              {query.currentPage > 1 && (
+                <button onClick={() => handlePageChange(false)} type="button">
+                  <MdChevronLeft color="#fff" size={30} />
+                </button>
+              )}
+
+              <span>{query.currentPage}</span>
+
+              {courses.length > 0 && (
+                <button onClick={() => handlePageChange(true)} type="button">
+                  <MdChevronRight color="#fff" size={30} />
+                </button>
+              )}
+            </Pagination>
+          </>
+        </Content>
       )}
-    </Content>
+    </>
   );
 }

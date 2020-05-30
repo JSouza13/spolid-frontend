@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 
 import Curso from '~/pages/Curso';
+import CreateClass from '~/pages/Curso/CreateClass';
 import CreateCourse from '~/pages/Curso/CreateCourse';
 import Dashboard from '~/pages/Dashboard';
 import ForgotPassword from '~/pages/ForgotPassword';
@@ -26,9 +27,16 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+
       <Route path="/instructor" component={Instructor} isPrivate />
       <Route path="/course/create" exact component={CreateCourse} isPrivate />
       <Route path="/course/:id" exact component={Curso} isPrivate />
+      <Route
+        path="/course/:id/lesson"
+        exact
+        component={CreateClass}
+        isPrivate
+      />
 
       <Route path="*" component={NotFound} />
     </Switch>

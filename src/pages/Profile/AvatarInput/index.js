@@ -40,10 +40,7 @@ export default function AvatarInput() {
 
   return (
     <Container>
-      <img
-        src={preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'}
-        alt=""
-      />
+      <img src={preview || 'https://api.adorable.io/avatars/285/ava'} alt="" />
       <label htmlFor="avatar">
         <FiCamera />
 

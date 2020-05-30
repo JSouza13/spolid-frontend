@@ -1,5 +1,6 @@
 import React from 'react';
-import { Levels } from 'react-activity';
+import { Sentry } from 'react-activity';
+import 'react-activity/dist/react-activity.css';
 
 import PropTypes from 'prop-types';
 
@@ -8,11 +9,11 @@ import { Container } from './styles';
 function Loading({ size, color, speed, animating, only }) {
   if (only)
     return (
-      <Levels size={size} color={color} speed={speed} animating={animating} />
+      <Sentry size={size} color={color} speed={speed} animating={animating} />
     );
   return (
     <Container>
-      <Levels size={size} color={color} speed={speed} animating={animating} />
+      <Sentry size={size} color={color} speed={speed} animating={animating} />
     </Container>
   );
 }

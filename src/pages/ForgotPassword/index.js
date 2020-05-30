@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 
 import logo from '~/assets/logo.svg';
 import { Input } from '~/components/Input';
+import Loading from '~/components/Loading';
 import { forgotRequest } from '~/store/modules/auth/actions';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
@@ -19,34 +20,37 @@ export default function ForgotPassword() {
 
   const formRef = useRef(null);
 
-  const handleSubmit = useCallback(async ({ email }) => {
-    try {
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .email('Informe um e-mail válido')
-          .required('E-mail é obrigatório'),
-      });
-
-      await schema.validate(
-        { email },
-        {
-          abortEarly: false,
-        }
-      );
-
-      await dispatch(forgotRequest(email));
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        Swal.fire({
-          title: `Ocorreu um erro`,
-          text: 'Informe um e-mail válido',
-          icon: 'error',
-          confirmButtonColor: '#e02020',
-          confirmButtonText: 'Ok!',
+  const handleSubmit = useCallback(
+    async ({ email }) => {
+      try {
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Informe um e-mail válido')
+            .required('E-mail é obrigatório'),
         });
+
+        await schema.validate(
+          { email },
+          {
+            abortEarly: false,
+          }
+        );
+
+        await dispatch(forgotRequest(email));
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          Swal.fire({
+            title: `Ocorreu um erro`,
+            text: 'Informe um e-mail válido',
+            icon: 'error',
+            confirmButtonColor: '#e02020',
+            confirmButtonText: 'Ok!',
+          });
+        }
       }
-    }
-  });
+    },
+    [dispatch]
+  );
 
   return (
     <Container>
@@ -62,10 +66,15 @@ export default function ForgotPassword() {
               icon={FiMail}
               type="text"
               placeholder="E-mail"
+              width="100%"
             />
-            <button type="submit">
-              {loading ? 'Carregando...' : 'Recuperar'}
-            </button>
+            {loading ? (
+              <Loading color="#E02020" size={30} />
+            ) : (
+              <button type="submit" width="100%">
+                <strong>Salvar</strong>
+              </button>
+            )}
           </Form>
           <Link to="/logon">
             <FiArrowLeft />

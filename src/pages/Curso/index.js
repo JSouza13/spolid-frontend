@@ -1,16 +1,28 @@
 import React from 'react';
 
-import course12 from '~/assets/course-12.jpg';
+import PropTypes from 'prop-types';
 
-import Leasson from './Leasson';
+import Lesson from './Lesson';
 import { Container, Content } from './styles';
 
-export default function Curso() {
+export default function Curso({
+  match: {
+    params: { id },
+  },
+}) {
   return (
     <Container>
       <Content>
-        <Leasson Title="React" thumbnail_url={course12} />
+        <Lesson course_id={id} />
       </Content>
     </Container>
   );
 }
+
+Curso.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};

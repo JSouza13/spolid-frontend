@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Tooltip from '../Tooltip';
+
 export const Label = styled.div`
   label {
     display: inline-block;
@@ -45,8 +47,16 @@ export const Content = styled.div`
   }
 `;
 
-export const ErrorMessage = styled.div`
-  margin-top: 5px;
-  font-size: 1.4rem;
-  color: #b22222;
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 16px;
+  svg {
+    margin: 0;
+    transition: color 2s;
+  }
+  span {
+    background: #c53030;
+    color: #fff;
+    border-color: #c53030 transparent;
+  }
 `;

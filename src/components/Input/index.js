@@ -6,17 +6,14 @@ import PropTypes from 'prop-types';
 
 import { Container, Error, Label } from './styles';
 
-export const Input = ({ name, label, icon: Icon, ...rest }) => {
+export const Input = ({ name, label, icon: Icon, prefix, ...rest }) => {
   const inputRef = useRef(null);
-
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
+  const { fieldName, defaultValue, error, registerField } = useField(name);
 
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  const handleInputFocus = useCallback(() => setIsFocused(true), []);
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
@@ -36,20 +33,26 @@ export const Input = ({ name, label, icon: Icon, ...rest }) => {
     <>
       <Label>
         {label && (
-          <label defaultValue={defaultValue} htmlFor={fieldName}>
+          <label htmlFor={fieldName} width={rest.width}>
             {label}
           </label>
         )}
       </Label>
-      <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
-        {Icon && <Icon size={20} />}
+      <Container
+        isErrored={!!error}
+        isFocused={isFocused}
+        isFilled={isFilled}
+        width={rest.width}
+      >
+        {prefix ? <span>{prefix}</span> : Icon && <Icon size={20} />}
 
         <input
+          autoComplete="new-password"
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
+          defaultValue={defaultValue}
           ref={inputRef}
           id={fieldName}
-          defaultValue={defaultValue}
           {...rest}
         />
 
@@ -67,9 +70,11 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   icon: PropTypes.elementType,
+  prefix: PropTypes.string,
 };
 
 Input.defaultProps = {
-  label: null,
   icon: null,
+  label: '',
+  prefix: '',
 };

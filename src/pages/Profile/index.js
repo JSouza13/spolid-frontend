@@ -7,6 +7,7 @@ import { Form } from '@unform/web';
 import { ThemeContext } from 'styled-components';
 
 import { Input } from '~/components/Input';
+import Loading from '~/components/Loading';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import AvatarInput from './AvatarInput';
@@ -18,17 +19,19 @@ export default function Profile() {
   const profile = useSelector((state) => state.user.profile);
   const { theme } = useContext(ThemeContext);
   const [provider, setProvider] = useState(profile.provider);
-
-  console.log(document.getElementById('avatar_id'));
+  const [loading, setLoading] = useState(false);
 
   function handleProvider() {
     setProvider(!provider);
   }
 
   function handleSubmit(data) {
+    setLoading(true);
+
     data.provider = provider;
 
     dispatch(updateProfileRequest(data));
+    setLoading(false);
   }
 
   return (
@@ -38,7 +41,13 @@ export default function Profile() {
           <Form ref={formRef} initialData={profile} onSubmit={handleSubmit}>
             <AvatarInput name="avatar_id" />
 
-            <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
+            <Input
+              name="name"
+              icon={FiUser}
+              type="text"
+              placeholder="Nome"
+              width="100%"
+            />
             <Input
               name="email"
               icon={FiMail}
@@ -46,6 +55,7 @@ export default function Profile() {
               placeholder="E-mail"
               disabled
               style={{ cursor: 'not-allowed', opacity: '0.3' }}
+              width="100%"
             />
             <p>Quero ser um instrutor!</p>
             <div style={{ alignSelf: 'start', marginBottom: '30px' }}>
@@ -69,20 +79,29 @@ export default function Profile() {
               icon={FiLock}
               type="password"
               placeholder="Sua senha atual"
+              width="100%"
             />
             <Input
               name="password"
               icon={FiLock}
               type="password"
               placeholder="Nova senha"
+              width="100%"
             />
             <Input
               name="confirmPassword"
               icon={FiLock}
               type="password"
               placeholder="Confirmação de senha"
+              width="100%"
             />
-            <button type="submit">Atualizar perfil</button>
+            {loading ? (
+              <Loading color="#E02020" size={30} />
+            ) : (
+              <button type="submit" width="50%">
+                <strong>Atualizar perfil</strong>
+              </button>
+            )}
           </Form>
         </AnimationContainer>
       </Content>

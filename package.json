@@ -10,6 +10,7 @@
     "@unform/core": "^2.1.0",
     "@unform/web": "^2.1.0",
     "axios": "^0.19.2",
+    "crypto": "^1.0.1",
     "customize-cra": "^0.9.1",
     "date-fns": "^2.14.0",
     "history": "^4.10.1",

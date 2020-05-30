@@ -1,9 +1,10 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
 
-import { ErrorMessage, Content, Label } from './styles';
+import { Content, Error, Label } from './styles';
 
 export const InputFile = ({
   name,
@@ -13,15 +14,12 @@ export const InputFile = ({
   ...rest
 }) => {
   const inputRef = useRef();
-
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const { fieldName, defaultValue = '', registerField, error } = useField(name);
+  const { fieldName, defaultValue, error, registerField } = useField(name);
 
-  const handleInputFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  const handleInputFocus = useCallback(() => setIsFocused(true), []);
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
@@ -47,7 +45,7 @@ export const InputFile = ({
         )}
       </Label>
 
-      <Content error={error} isFocused={isFocused} isFilled={isFilled}>
+      <Content isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
         {label ? (
           <label htmlFor={fieldName}>
             {Icon && <Icon size={20} />}
@@ -64,7 +62,11 @@ export const InputFile = ({
           {...rest}
         />
 
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle size={20} color="#c53030" />
+          </Error>
+        )}
       </Content>
     </>
   );

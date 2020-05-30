@@ -77,3 +77,17 @@ export const Content = styled.div`
     padding: 20px;
   }
 `;
+
+export const Pagination = styled.footer`
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50%;
+  > button {
+    max-width: fit-content;
+    padding-top: 6px;
+    border: 0;
+    background: transparent;
+  }
+`;
